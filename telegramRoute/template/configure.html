@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
+        </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/configure.css">
+
+    <style>
+      body {
+        font-family: 'Poppins', serif;
+      }
+    </style>
+  
+</head>
+
+  
+<body>
+
+  <!-- Success modal -->
+  {{#if show_success_modal}}
+  <div id="success-update-modal" class="success-modal">
+    <div class="modal-content">
+        <img src="https://cdn3.iconfinder.com/data/icons/social-media-chamfered-corner/154/telegram-512.png" width="80" height="auto" style="border-radius: 17px;" />
+        <p class="modal-text" style="margin-top: 20px; margin-bottom: 20px;">Configuration updated successfully</p>
+        <button class="btn cancel-btn" onclick="document.getElementById('success-update-modal').style.display='none'">Close</button>
+    </div>
+  </div>
+  {{/if}}
+
+  <!-- Error modal -->
+  {{#if show_error_modal}}
+  <div id="error-update-modal" class="error-modal">
+    <div class="modal-content">
+        <img src="https://cdn-icons-png.flaticon.com/512/148/148766.png" width="80" height="auto"  />
+        <p style="margin-top: 20px; margin-bottom: 20px;">An error occurred while updating the configuration</p>
+        <button class="btn cancel-btn" onclick="document.getElementById('error-update-modal').style.display='none'">Close</button>
+    </div>
+  </div>
+  {{/if}}
+
+
+  
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-title">
+        <div class="logo-container">
+          <img src="https://cdn3.iconfinder.com/data/icons/social-media-chamfered-corner/154/telegram-512.png" class="telegram-icon" width="60px" height="60px">
+        </div>
+        <div class="title-version">
+          <p class="title">Telegram Connector</p>
+          <div class="status-box" style="padding: 0px 8px; letter-spacing: 1px; height: 18px;"> 
+            <p style="margin-bottom: 0px;">{{ app_version }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="status-box"> 
+        <p style="margin-bottom: 0px; margin-right: 8px;">Status: </p> 
+        {{#if telegram_token}}
+        <i class="fa fa-circle green-circle"></i>
+        <p style="margin-bottom: 0px;">Connected</p>
+        {{else}}
+        <i class="fa fa-circle red-circle"></i>
+        <p style="margin-bottom: 0px;">Disconnected</p>  
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO BOX -->
+  <div class="info-box">
+    <div class="info-list">
+       <ul>
+        <div class="list-element">
+          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width=20 height=20 style="margin-right: 10px;"/>
+          <h7>Integrate Telegram bot with Tiledesk.</h7>
+        </div>
+        <div class="list-element">
+          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width=20 height=20 style="margin-right: 10px;"/>
+          <h7>Once a chat is initiated on Telegram bot, receive an alert on your Tiledesk account.</h7>
+        </div>
+        <div class="list-element">
+          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width=20 height=20 style="margin-right: 10px;"/>
+          <h7>Enable instant messaging and answer multiple conversations, everything from Tiledesk account.</h7>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Docs Section -->
+  <div class="docs-box">
+    <div class="docs-section">
+      <p style="margin-top: 20px; font-size: 18px; font-weight: 600;">Before you start</p>
+      <div style="padding: 20px; background-color: #2fa2dc24; border-radius: 8px; width: 600px; margin-bottom: 5px;">
+        <div style="display: flex; flex-direction: row; align-items: baseline;">
+          <div>
+            <img src="https://freeiconshop.com/wp-content/uploads/edd/arrow-flat.png" width="20px" height="auto" style="margin-right: 10px;"> 
+          </div>
+          <div>
+            <a href="https://gethelp.tiledesk.com/articles/telegram/" target="_blank">Connect Tiledesk with Telegram bot</a>
+            <p style="color: grey; margin-bottom: 0px;">A small but very useful guide on how to connect your Telegram bot with Tiledesk</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- CONFIGURE BOX -->
+  <div class="configure-box">
+    <div class="configure">
+      <p class="title" style="margin-bottom: 20px;">Your Configuration</p>
+
+      <div style="min-width: 600px">
+          <form action="./update" method="post">
+            
+            <!-- Bot name -->
+            <div class="form-group" style="width: 522px;">
+              <label class="input-label" for="bot_name">Bot Name</label>
+              <div style="display: flex; flex-direction: row; align-items: center;">
+                <input type="text" class="form-control custom-input" name="bot_name" value="{{ bot_name }}" placeholder="Enter Bot Name">
+                <span style="margin-left: 10px;">
+                  <i class="fa fa-question-circle custom-tooltip">
+                    <span class="custom-tooltiptext">This is the name of your Telegram bot</span>
+                  </i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Verify Token -->
+            <div class="form-group" style="width: 522px;">
+              <label class="input-label" for="telegram_token">Telegram Token</label>
+              <div style="display: flex; flex-direction: row; align-items: center;">
+              <input type="text" required class="form-control custom-input" name="telegram_token" value="{{ telegram_token }}" placeholder="Enter your bot authentication token">
+                <span style="margin-left: 10px;">
+                  <i class="fa fa-question-circle custom-tooltip">
+                    <span class="custom-tooltiptext">The Telegram token provided by @BotFather</span>
+                  </i>
+                </span>
+              </div>
+            </div>
+
+            <input type="hidden" name="project_id" value="{{ project_id }}" />
+            <input type="hidden" name="token" value="{{ token }}" />
+
+            {{#if telegram_token}}
+              <div style="width: 500px; text-align: right;">
+                <input type="submit" class="btn" style="width: 200px; background-color: #0ba2dc; color: white; font-weight: 500;" value="Update">
+              </div>
+            {{else}}
+              <div style="width: 500px; text-align: right;">
+                <input type="submit" class="btn" style="width: 200px; background-color: #0ba2dc; color: white; font-weight: 500;" value="Connect">
+              </div>
+            {{/if}}
+          </form>
+        </div> 
+
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="disconnect-box">
+    <div class="disconnect">
+      <p class="title" style="margin-bottom: 20px;"> Disconnect</p>  
+
+        <!-- Disconnect Button -->
+        {{#if wab_token}}
+        <div>
+          <p style="color: rgb(140, 140, 140);">The Telegram App is configured on your Tildesk project.</p>
+          <p>By clicking on disconnect you will no longer be able to receive messages from the Telegram channel</p>
+          <form action="./disconnect" method="post">
+            <input type="hidden" name="project_id" value="{{ project_id }}">
+                <input type="hidden" name="token" value="{{ token }}">
+                <input type="hidden" name="subscription_id" value="{{ subscription_id }}">
+            <input type="submit" class="btn disconnect-button" style="margin-top: 10px; width: 160px;" value="Disconnect">
+          </form>
+        </div>
+        {{else}}
+        <!-- App not configured -->
+        <p style="color: rgb(140, 140, 140);">The Telegram App is not yet configured on your Tildesk project.</p>
+        {{/if}}
+    </div>
+  </div>
+
+
+  <!--
+  <div class="version-box">
+    <div class="version">
+      <p class="version-title">App version: </p>
+      <div class="status-box" style="padding: 0px 20px; letter-spacing: 1px; height: 30px;"> 
+        <p style="margin-bottom: 0px;">{{ app_version }}</p>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <script> 
+    
+    function copyTextToClipboard() {
+      const proxyUrl = document.getElementById('proxy_url').select()
+      
+      //document.querySelector('textarea').select();
+      try {
+        document.execCommand('copy');
+        console.log('Async: Copied to clipboard!');
+        let el1 = document.getElementById('copy-div');
+        el1.style.visibility = 'hidden';
+
+        let el2 = document.getElementById('copied-div');
+        el2.style.visibility = 'visible';
+
+        //let btn = document.getElementById('copy-btn');
+        //btn.value = "Copied!";
+      } catch (err) {
+        console.error('Async: Could not copy text: ', err);
+      }
+    }
+</script>
+  
+</body>

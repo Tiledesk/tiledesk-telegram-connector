@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
+        </script>
+
+</head>
+
+<body>
+  
+  <div style="padding: 100px 230px; background-color: #efefef; min-width: 800px; display: flex; justify-content: center;" >
+    
+    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0px 0px 5px 0px #cfcfcf; min-width: 800px;">
+      
+      <div>
+        
+        <div style="display: flex; flex-direction: row; align-items: center;">
+          
+          <div style="margin-right: 80px;">
+            <img width="130" height="auto" style="margin-top: 6px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/600px-Telegram_logo.svg.png" alt="..." class="img-rounded">
+          </div>
+    
+          <div>
+            
+            <h1 style="margin-top: 0px; margin-bottom: 2px; min-width: 500px;">Telegram (Test)</h1>
+            <h7 style="color: rgb(140, 140, 140);">by Tiledesk (v. 2.0.1)</h7>
+          
+            <div style="margin-top: 20px;">
+              <h7 style="color: rgb(140, 140, 140);">The Telegram App is configured on your Tildesk project.</h7>
+              <form action="./uninstall" method="post">
+                <input type="hidden" name="project_id" value="{{ project_id }}">
+                <input type="hidden" name="app_id" value="{{ app_id }}">
+                <input type="hidden" name="token" value="{{ token }}">
+                <input type="hidden" name="subscriptionId" value="{{ subscriptionId }}">
+                <input type="submit" class="btn btn-danger" style="margin-top: 10px; width: 160px;"       value="Disconnect">
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!--
+        <button onClick="javascript:window.open('https://gethelp.tiledesk.com/articles/telegram/', '_blank');" class="btn btn-        primary">View Documentation</button>            
+        -->
+        
+        <div style="margin-top: 40px; padding: 20px; background-color: aliceblue; border-radius: 8px; min-width: 600px;">
+          <h7>Receive Telegram bot conversations in your Tiledesk dashboard. Seamlessly Chat with your targeted audience on                         Telegram right from the Tiledesk dashboard.</h7>
+              <ul>
+                  <li>
+                      <h7>Integrate Telegram bot with Tiledesk.</h7>
+                  </li>
+                  <li>
+                      <h7>Once a chat is initiated on Telegram bot, receive an alert on your Tiledesk account.</h7>
+                  </li>
+                  <li>
+                      <h7>Enable instant messaging and answer multiple conversations - everything from Tiledesk account.</h7>
+                  </li>
+              </ul>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <a href="https://gethelp.tiledesk.com/articles/telegram/" target="_blank">View documentation</a>
+        </div>
+        
+
+        <hr>
+
+        <div>
+          <h4>Your Configuration</h4>
+      
+          <div style="min-width: 600px">
+            <form action="./update" method="post">
+
+                <div class="form-group" style="width: 400px;">
+                    <label for="bot_name">Bot Name</label>
+                    <input type="text" class="form-control" name="bot_name" value="{{ bot_name }}"
+                        placeholder="Enter Bot Name">
+                </div>
+
+                <div class="form-group" style="width: 400px;">
+                    <label for="tg_token">Telegram Token</label>
+                    <input type="text" class="form-control" name="tg_token" value="{{ tg_token }}"
+                        placeholder="Enter your bot authentication token">
+                </div>
+
+                <input type="hidden" name="project_id" value="{{ project_id }}" />
+                <input type="hidden" name="app_id" value="{{ app_id }}" />
+                <input type="hidden" name="token" value="{{ token }}" />
+                <div style="width: 400px; text-align: right;">
+                    <input type="submit" class="btn btn-primary" style="width: 35%;" value="Update">
+                </div>
+
+            </form>
+          </div> 
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+
+</body>
