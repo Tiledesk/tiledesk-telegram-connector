@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-//const telegram = require('@tiledesk/tiledesk-telegram-connector');
-const telegram = require('./telegramRoute');
+const telegram = require('@tiledesk/tiledesk-telegram-connector');
+//const telegram = require('./telegramRoute');
 const telegramRoute = telegram.router;
 
 app.use('/', telegramRoute);
