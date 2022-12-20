@@ -105,6 +105,23 @@ ul {
   margin-top: 20px;
 }
 
+.advanced-box {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.advanced {
+  width: 65%;
+  margin-bottom: 30px;
+}
+
+.show_info_message {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
 
 .input-label {
   margin-bottom: 2px;
@@ -201,17 +218,17 @@ ul {
 }
 
 .disconnect-box {
-  margin-top: 20px;
-
+  /*margin-top: 20px;*/
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: #fff8f7;
 }
 
 .disconnect {
   width: 65%;
+  margin-top: 30px;
   margin-bottom: 30px;
-  
 }
 
 .disconnect-button {
@@ -364,3 +381,54 @@ ul {
 .telegram-icon {
   border-radius: 38px;
 }
+
+.option-description {
+  color: #8c8c8c;
+}
+
+
+
+
+
+.toggle-pill-dark input[type="checkbox"] {
+  display: none;
+}
+.toggle-pill-dark input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  width: 3em;
+  height: 1.6em;
+  margin-bottom: 20px;
+  border-radius: 1em;
+  /*background: #0a82b0;*/
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: background 0.1s ease-in-out;
+  transition: background 0.1s ease-in-out;
+}
+.toggle-pill-dark input[type="checkbox"] + label:before {
+  content: "";
+  display: block;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 1em;
+  background: #e85353;
+  position: absolute;
+  left: 0.2em;
+  top: 0.2em;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.toggle-pill-dark input[type="checkbox"]:checked + label:before {
+  background: #47cf73;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+  left: 1.6em;
+  -webkit-transform: rotate(295deg);
+  transform: rotate(295deg);
+}
+/* toggle-pill-dark end */

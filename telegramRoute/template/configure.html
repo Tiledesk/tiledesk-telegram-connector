@@ -182,8 +182,45 @@
     </div>
   </div>
 
-  
+  {{#if telegram_token}}
+  <div class="advanced-box">
+    <div class="advanced">
+      
+      <p class="title" style="margin-bottom: 20px;">Advanced</p>
+
+      <form action="./update_advanced" id="advanced_form" method="post">
+        <div class="item">
+          <div class="toggle-pill-dark" style="display: flex; flex-direction: row; height: 26px;">
+            <div style="margin-right: 10px">
+              {{#if show_info_message}}
+              <input type="checkbox" id="show_info_message" name="show_info_message" checked onclick="update_advanced()">
+              {{else}}
+              <input type="checkbox" id="show_info_message" name="show_info_message" onclick="update_advanced()">
+              {{/if}}
+              <label for="show_info_message"></label>
+              <input type="hidden" name="project_id" value="{{ project_id }}" />
+              <!--<input type="hidden" name="token" value="{{ token }}" />-->
+              <input type="submit" style="display: none">
+            </div>
+            <p>Show info message</p>
+          </div>
+          <p class="option-description">Choose whether to send info messages on the visitor's chat. </p>
+        </div>
+      </form>
+        
+      
+
+      
+    </div>  
+  </div>
+  {{/if}}
+
+
+  {{#if telegram_token}}
   <div class="disconnect-box">
+  {{else}} 
+  <div class="disconnect-box" style="background-color: white;">
+  {{/if}}
     <div class="disconnect">
       <p class="title" style="margin-bottom: 20px;"> Disconnect</p>  
 
@@ -238,6 +275,17 @@
       } catch (err) {
         console.error('Async: Could not copy text: ', err);
       }
+    }
+
+    function update_advanced() {
+
+      console.log("try to updated advanced options")
+      try {
+        document.getElementById("advanced_form").submit();
+      } catch (err) {
+        console.error('Async: could not update advanced options: ', err);
+      }
+      
     }
 </script>
   

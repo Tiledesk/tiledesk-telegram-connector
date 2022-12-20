@@ -60,8 +60,8 @@ class TiledeskTelegram {
       console.log("[Tiledesk Telegram] Message sent!");
       return response;
     }).catch((err) => {
-      console.error("[Tiledesk Telegram ERROR] Send message: ");
-      throw err;
+      console.error("[Tiledesk Telegram ERROR] Send message: ", err.response.data);
+      return err;
     })
   }
 
@@ -257,9 +257,9 @@ class TiledeskTelegram {
         }
       }
     }).catch((err) => {
-      console.error("An error occured: ", err);
+      console.error("An error occured: ", err.response.request.data);
       if (callback) {
-        callback(err, null, null);
+        callback("an error occured", null, null);
       }
     })
   }

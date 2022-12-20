@@ -54,7 +54,8 @@ class TiledeskTelegramTranslator {
         telegram_message.caption = text;
       }
 
-      else if (tiledeskChannelMessage.metadata.type.startsWith('application')) {
+      else if ((tiledeskChannelMessage.metadata.type && tiledeskChannelMessage.metadata.type.startsWith('application')) || tiledeskChannelMessage.type.startsWith('application')) {
+      //else if (tiledeskChannelMessage.metadata.type.startsWith('application')) {
 
         telegram_message.document = tiledeskChannelMessage.metadata.src;
         //telegram_message.caption = tiledeskChannelMessage.text.substr(tiledeskChannelMessage.text.indexOf(')') + 1);  
