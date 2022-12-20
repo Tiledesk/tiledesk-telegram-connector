@@ -95,6 +95,7 @@ router.get('/configure', async (req, res) => {
       bot_name: settings.bot_name,
       telegram_token: settings.telegram_token,
       subscriptionId: settings.subscriptionId,
+      show_info_message: settings.show_info_message
     }
   } else {
     var replacements = {
@@ -152,7 +153,8 @@ router.post('/update', async (req, res) => {
         token: settings.token,
         subscriptionId: settings.subscriptionId,
         bot_name: settings.bot_name,
-        telegram_token: settings.telegram_token
+        telegram_token: settings.telegram_token,
+        show_info_message: settings.show_info_message
       }
       if (log) {
         console.log("Replacements: ", replacements);
@@ -192,6 +194,7 @@ router.post('/update', async (req, res) => {
           secret: subscription.secret,
           bot_name: bot_name,
           telegram_token: telegram_token,
+          show_info_message: false
         }
 
         db.set(CONTENT_KEY, settings);
@@ -208,7 +211,8 @@ router.post('/update', async (req, res) => {
             token: settings.token,
             subscriptionId: settings.subscriptionId,
             bot_name: settings.bot_name,
-            telegram_token: settings.telegram_token
+            telegram_token: settings.telegram_token,
+            show_info_message: settings.show_info_message
           }
           if (log) {
             console.log("Replacements: ", replacements);
@@ -226,6 +230,27 @@ router.post('/update', async (req, res) => {
       console.log("\n (ERROR) Subscription: ", err)
     })
   }
+})
+
+router.post('/update_advanced', async (req, res) => {
+  console.log("\n/update");
+  console.log("req.body: ", req.body);
+
+  let projectId = req.body.project_id;
+  let show_info_message = false;
+  if (req.body.show_info_message && req.body.show_info_message == 'on') {
+    show_info_message = true;
+  }
+
+  let CONTENT_KEY = "telegram-" + projectId;
+  let settings = await db.get(CONTENT_KEY);
+
+  if (settings) {
+    settings.show_info_message = show_info_message;
+    db.set(CONTENT_KEY, settings);
+    await db.get(CONTENT_KEY);
+  }
+  res.status(200)
 })
 
 router.post('/disconnect', async (req, res) => {
@@ -288,19 +313,31 @@ router.post('/tiledesk', async (req, res) => {
     return res.send(200);
   }
 
+  //get settings from mongo
   if (attributes && attributes.subtype === "info") {
     console.log("Skip subtype: ", attributes.subtype);
     return res.send(200);
   }
 
-  if (attributes && attributes.subtype === 'info/support') {
-    console.log("Skip subtype: ", attributes.subtype);
-    return res.send(200);
-  }
-
-  //get settings from mongo
   let CONTENT_KEY = "telegram-" + projectId;
   let settings = await db.get(CONTENT_KEY);
+
+  if (attributes && attributes.subtype === 'info/support') {
+    //console.log("subtype: ", attributes.subtype);
+    //console.log("show info message: ", settings.show_info_message);
+
+    // Temporary solve the bug of multiple lead update messages
+    if (attributes.messagelabel.key == 'LEAD_UPDATED') {
+      console.log("Skip LEAD_UPDATED");
+      return res.send(200);
+    }
+
+    if (!settings.show_info_message || settings.show_info_message == false) {
+      console.log("show info message: ", settings.show_info_message);
+      console.log("Skip subtype: ", attributes.subtype);
+      return res.send(200);
+    }
+  }
 
   let recipient_id = tiledeskChannelMessage.recipient;
 
@@ -378,7 +415,7 @@ router.post('/telegram', async (req, res) => {
     }
 
     let response = ttClient.editMessageReplyMarkup(settings.telegram_token, reply_markup_data);
-    console.log("Edit message markup response: ", response);
+    console.log("Edit message markup response: ", response.data);
   }
 
   const tlr = new TiledeskTelegramTranslator();
