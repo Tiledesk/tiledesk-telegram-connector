@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-const telegram = require('@tiledesk/tiledesk-telegram-connector');
-//const telegram = require('./telegramRoute');
+//const telegram = require('@tiledesk/tiledesk-telegram-connector');
+const telegram = require('./telegramRoute');
 const telegramRoute = telegram.router;
 
 app.use('/', telegramRoute);
@@ -14,7 +14,7 @@ const TELEGRAM_API_URL = process.env.TELEGRAM_API_URL;
 const TELEGRAM_FILE_URL = process.env.TELEGRAM_FILE_URL;
 const MONGODB_URL = process.env.MONGODB_URL;
 const APPS_API_URL = process.env.APPS_API_URL;
-const log = true;
+const log = false;
 
 telegram.startApp(
   {

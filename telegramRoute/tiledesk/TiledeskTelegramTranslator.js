@@ -1,3 +1,5 @@
+const winston = require('../winston')
+
 class TiledeskTelegramTranslator {
 
   /**
@@ -16,16 +18,14 @@ class TiledeskTelegramTranslator {
 
   constructor() {
 
-    this.log = true;
+    this.log = false;
 
   }
 
   async toTelegram(tiledeskChannelMessage, telegram_receiver) {
-
-    if (this.log) {
-      console.log("[Translator] Tiledesk message: ", tiledeskChannelMessage);
-    }
-
+  
+    winston.debug("(tgm) [Translator] Tiledesk message: ", tiledeskChannelMessage);
+    
     let text = '';
     if (tiledeskChannelMessage.text) {
       text = tiledeskChannelMessage.text;
@@ -35,7 +35,6 @@ class TiledeskTelegramTranslator {
       chat_id: telegram_receiver,
       parse_mode: "markdown"
     }
-
 
     // Metadata
     if (tiledeskChannelMessage.metadata) {
@@ -64,11 +63,7 @@ class TiledeskTelegramTranslator {
       }
 
       else {
-        console.log("\nfile type not supported");
-      }
-
-      if (this.log) {
-        console.log("[Translator] telegram message: ", telegram_message)
+        winston.verbose("(tgm) [Translator] file type not supported");
       }
       return telegram_message;
 
@@ -80,10 +75,7 @@ class TiledeskTelegramTranslator {
         if (tiledeskChannelMessage.attributes.attachment.buttons) {
 
           let buttons = tiledeskChannelMessage.attributes.attachment.buttons;
-          if (this.log) {
-            console.log("Buttons: ", buttons);
-          }
-
+          
           // Issue: quick_replies and inline_buttons not supported togheter
           // Solution 1: create only inline_buttons 
           // Solution 2: send a message for type
@@ -100,10 +92,11 @@ class TiledeskTelegramTranslator {
 
             if (btn.type == 'action') {
               let text_value = (btn.value.length > 36) ? btn.value.substr(0, 34) + '..' : btn.value;
-              let cb_value = (btn.value.length > 36) ? btn.value.substr(0, 36) : btn.value;
+              //let cb_value = (btn.value.length > 36) ? btn.value.substr(0, 36) : btn.value;
+              
               let action_btn = {
-                type: 'action',
-                action: cb_value
+                t: 'a',
+                action: btn.action
               }
               inline_buttons.push([{ text: text_value, callback_data: JSON.stringify(action_btn) }])
             }
@@ -113,15 +106,15 @@ class TiledeskTelegramTranslator {
               let text_value = (btn.value.length > 38) ? btn.value.substr(0, 36) + '..' : btn.value;
               let cb_value = (btn.value.length > 38) ? btn.value.substr(0, 38) : btn.value;
               let text_btn = {
-                type: 'text',
+                t: 't',
                 value: cb_value
               }
               inline_buttons.push([{ text: text_value, callback_data: JSON.stringify(text_btn) }])
             }
           }
 
+          telegram_message.text = tiledeskChannelMessage.text;
           if (inline_buttons.length > 0) {
-            telegram_message.text = tiledeskChannelMessage.text;
             telegram_message.reply_markup = {
               inline_keyboard: inline_buttons,
               resize_keyboard: true,
@@ -129,9 +122,6 @@ class TiledeskTelegramTranslator {
             }
           }
 
-          if (this.log) {
-            console.log("[Translator] telegram message: ", telegram_message)
-          }
           return telegram_message;
 
           // For Solution 2
@@ -179,18 +169,12 @@ class TiledeskTelegramTranslator {
 
       } else {
         telegram_message.text = tiledeskChannelMessage.text;
-        if (this.log) {
-          console.log("[Translator] telegram message: ", telegram_message)
-        }
         return telegram_message;
       }
     }
 
     else {
       telegram_message.text = tiledeskChannelMessage.text;
-      if (this.log) {
-        console.log("[Translator] telegram message: ", telegram_message)
-      }
       return telegram_message;
     }
 
@@ -199,17 +183,13 @@ class TiledeskTelegramTranslator {
   }
 
   async toTiledesk(telegramChannelMessage, telegram_token, media_url) {
-    console.log("[Translator] telegramChannelMessage: ", telegramChannelMessage);
-    console.log("[Translator] telegramChannelMessage: ", JSON.stringify(telegramChannelMessage, null, 4))
-
+    
     if (telegramChannelMessage.callback_query) {
       // callback query
       let callback = telegramChannelMessage.callback_query;
       let data = JSON.parse(callback.data)
 
-      console.log("callback data: ", data);
-
-      if (data.type === 'action') {
+      if (data.t === 'a') {
         var tiledeskMessage = {
           senderFullname: callback.from.first_name + " " + callback.from.last_name,
           text: ' ',
@@ -259,7 +239,7 @@ class TiledeskTelegramTranslator {
       // Video
       else if (message.video) {
         let video_url = TiledeskTelegramTranslator.TELEGRAM_FILE_BASE_URL + `${telegram_token}/${media_url}`;
-        console.log("video url: ", video_url)
+        winston.debug("(tgm) [Translator] video url: ", video_url)
 
         var msg = {
           text: "[" + message.video.file_name + "](" + video_url + ")",
@@ -307,7 +287,7 @@ class TiledeskTelegramTranslator {
 
     }
     else {
-      console.log("Format not supported!")
+      winston.verbose("(tgm) [Translator] Format not supported!")
       return null;
     }
 
@@ -318,9 +298,7 @@ class TiledeskTelegramTranslator {
   // HTTP REQUEST
 
   static async myrequest(options, callback, log) {
-    if (this.log) {
-      console.log("[Tiledesk Subscription Client] Options: ", options);
-    }
+    
     return await axios({
       url: options.url,
       method: options.method,
@@ -328,9 +306,7 @@ class TiledeskTelegramTranslator {
       params: options.params,
       headers: options.headers
     }).then((res) => {
-      if (this.log) {
-        console.log("[Tiledesk Subscription Client] Response headers:\n", res.headers);
-      }
+      
       if (res && res.status == 200 && res.data) {
         if (callback) {
           callback(null, res.data);
@@ -342,9 +318,9 @@ class TiledeskTelegramTranslator {
         }
       }
     }).catch((err) => {
-      console.error("An error occured: ", err);
+      winston.error("(tgm) [Translator] An error occured: ", err);
       if (callback) {
-        callback(err, null, null);
+        callback("An error occurred", null, null);
       }
     })
   }

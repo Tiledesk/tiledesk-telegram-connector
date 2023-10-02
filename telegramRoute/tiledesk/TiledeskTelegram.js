@@ -37,18 +37,47 @@ class TiledeskTelegram {
     this.log = false;
     if (config.log) {
       this.log = config.log;
-      console.log("Log active: ", this.log);
     }
 
   }
 
-  async sendMessage(telegram_token, message) {
-    if (this.log) {
-      console.log("[Tiledesk Telegram] Sending message...", message);
-    } else {
-      cosole.log("[Tiledesk Telegram] Seding message...");
-    }
+  async send(telegram_token, message) {
+    return new Promise((resolve, reject) => {
+      if (message.photo) {
+        this.sendPhoto(telegram_token, message).then((response) => {
+          resolve(response);
+        }).catch((err) => {
+          reject(err);
+        })
+      } 
+      else if (message.video) {
+        this.sendVideo(telegram_token, message).then((response) => {
+          resolve(response);
+        }).catch((err) => {
+          reject(err);
+        })
+      } 
+      else if (message.document) {
+        this.sendDocument(telegram_token, message).then((response) => {
+          resolve(response);
+        }).catch((err) => {
+          reject(err);
+        })
+      } else {
+        this.sendMessage(telegram_token, message).then((response) => {
+          resolve(response);
+        }).catch((err) => {
+          winston.error("err: ", err)
+          reject(err);
+        })
+      }
+    })
+  }
 
+  async sendMessage(telegram_token, message) {
+    winston.verbose("(tgm) [TiledeskTelegram] Sending message...");
+    winston.debug("(tgm) [TiledeskTelegram] Sending message...", message);
+    
     return await axios({
       url: this.TELEGRAM_API_URL + `${telegram_token}/sendMessage`,
       headers: {
@@ -57,21 +86,17 @@ class TiledeskTelegram {
       data: message,
       method: 'POST'
     }).then((response) => {
-      console.log("[Tiledesk Telegram] Message sent!");
       return response;
     }).catch((err) => {
-      console.error("[Tiledesk Telegram ERROR] Send message: ", err.response.data);
+      winston.error("(tgm) [TiledeskTelegram] send message error: ", err.response.data);
       return err;
     })
   }
 
 
   async sendPhoto(telegram_token, message) {
-    if (this.log) {
-      console.log("[Tiledesk Telegram] Sending message...", message);
-    } else {
-      cosole.log("[Tiledesk Telegram] Seding message...");
-    }
+    winston.verbose("(tgm) [TiledeskTelegram] Sending message...");
+    winston.debug("(tgm) [TiledeskTelegram] Sending message...", message);
 
     return await axios({
       url: this.TELEGRAM_API_URL + `${telegram_token}/sendPhoto`,
@@ -81,20 +106,16 @@ class TiledeskTelegram {
       data: message,
       method: 'POST'
     }).then((response) => {
-      console.log("[Tiledesk Telegram] Photo message sent!");
       return response;
     }).catch((err) => {
-      console.error("[Tiledesk Telegram ERROR] Send photo message: ");
+      winston.error("(tgm) [TiledeskTelegram] send photo message error: ", err);
       throw err;
     })
   }
 
   async sendVideo(telegram_token, message) {
-    if (this.log) {
-      console.log("[Tiledesk Telegram] Sending message...", message);
-    } else {
-      cosole.log("[Tiledesk Telegram] Seding message...");
-    }
+    winston.verbose("(tgm) [TiledeskTelegram] Seding message...");
+    winsto.debug("(tgm) [TiledeskTelegram] Sending message...", message);
 
     return await axios({
       url: this.TELEGRAM_API_URL + `${telegram_token}/sendVideo`,
@@ -104,20 +125,16 @@ class TiledeskTelegram {
       data: message,
       method: 'POST'
     }).then((response) => {
-      console.log("[Tiledesk Telegram] Video message sent!");
       return response;
     }).catch((err) => {
-      console.error("[Tiledesk Telegram ERROR] Send video message: ");
+      winston.error("(tgm) [TiledeskTelegram] send video message error: ", err);
       throw err;
     })
   }
 
   async sendDocument(telegram_token, message) {
-    if (this.log) {
-      console.log("[Tiledesk Telegram] Sending message...", message);
-    } else {
-      cosole.log("[Tiledesk Telegram] Seding message...");
-    }
+    winston.verbose("(tgm) [TiledeskTelegram] Seding message...");
+    winston.debug("(tgm) [TiledeskTelegram] Sending message...", message);
 
     return await axios({
       url: this.TELEGRAM_API_URL + `${telegram_token}/sendDocument`,
@@ -127,10 +144,9 @@ class TiledeskTelegram {
       data: message,
       method: 'POST'
     }).then((response) => {
-      console.log("[Tiledesk Telegram] Document message sent!");
       return response;
     }).catch((err) => {
-      console.error("[Tiledesk Telegram ERROR] Send document message: ");
+      winston.error("(tgm) [TiledeskTelegram] send document message error: ", err);
       throw err;
     })
   }
@@ -163,7 +179,6 @@ class TiledeskTelegram {
             if (callback) {
               callback(null, resbody);
             }
-            console.log("resbody: ", resbody);
             resolve(resbody);
           }
         }, true)
@@ -180,8 +195,7 @@ class TiledeskTelegram {
         'Content-Type': 'application/json'
       },
       json: reply_markup_data,
-      method: 'GET',
-      //method: 'POST'
+      method: 'GET'
     };
 
     let promise = new Promise((resolve, reject) => {
@@ -207,11 +221,8 @@ class TiledeskTelegram {
 
 
   async downloadMedia(telegram_token, mediaId) {
-    console.log("[Tiledesk Telegram] Downloading media...")
-    if (this.log) {
-      console.log("[Tiledesk Telegram] Download media with id: ", mediaId);
-    }
-
+    winston.debug("(tgm) [TiledeskTelegram] Downloading media: ", mediaId)
+    
     return await axios({
       url: this.TELEGRAM_API_URL + `${telegram_token}/getFile?file_id=${mediaId}`,
       headers: {
@@ -219,22 +230,17 @@ class TiledeskTelegram {
       },
       method: "GET"
     }).then((response) => {
-      console.log("[Tiledesk Telegram] Download complete");
+      winston.verbose("(tgm) [TiledeskTelegram] Download complete");
       return response.data
     }).catch((err) => {
-      console.error("[Tiledesk Telegram ERROR] Download failed!: ", err);
+      winston.error("(tgm) [TiledeskTelegram] Download failed!: ", err);
     })
   }
 
 
   // HTTP REQUEST
   static async request(options, callback, log) {
-    if (this.log) {
-      console.log("API URL: ", options.url);
-      console.log("** Options: ", options);
-    }
-    console.log("API URL: ", options.url);
-    console.log("** Options: ", options);
+    
     return await axios({
       url: options.url,
       method: options.method,
@@ -242,10 +248,6 @@ class TiledeskTelegram {
       params: options.params,
       headers: options.headers
     }).then((res) => {
-      if (this.log) {
-        console.log("Response for url:", options.url);
-        console.log("Response headers:\n", res.headers);
-      }
       if (res && res.status == 200 && res.data) {
         if (callback) {
           callback(null, res.data);
@@ -257,7 +259,7 @@ class TiledeskTelegram {
         }
       }
     }).catch((err) => {
-      console.error("An error occured: ", err.response.request.data);
+      winston.error("(tgm) [TiledeskTelegram] An error occured: ", err.response.request.data);
       if (callback) {
         callback("an error occured", null, null);
       }

@@ -32,7 +32,7 @@ class TiledeskChannel {
       throw new Error('config.API_URL is mandatory');
     }
 
-    this.log = true;
+    this.log = false;
     if (config.log) {
       this.log = config.log;
     }
@@ -80,7 +80,7 @@ class TiledeskChannel {
       //new_request_id = hased_request_id = "support-group-" + projectId + "-" + uuidv4() + "-" + sender_id + "-" + webhook_event.recipient.id;
 
     } else {
-      console.log("[Tiledesk Channel] Channel not supported")
+      winston.verbose("(tgm) [TiledeskChannel] Channel not supported")
     }
 
     var customToken = jwt.sign(payload, this.settings.secret);
@@ -106,22 +106,16 @@ class TiledeskChannel {
         method: 'GET'
       }).then((response) => {
 
-        if (this.log) {
-          console.log("[Tiledesk Channel] get request response: ", response.data);
-        }
-
         let request_id;
         if (response.data.requests[0]) {
           request_id = response.data.requests[0].request_id;
-          console.log("Old request id: ", request_id);
+          winston.debug("(tgm) [TiledeskChannel] Old request id: ", request_id);
         } else {
           request_id = new_request_id;
-          console.log("New request id: ", request_id);
+          winston.debug("(tgm) [TiledeskChannel] New request id: ", request_id);
         }
 
-        if (this.log) {
-          console.log("[Tiledesk Channel] tiledeskMessage:", tiledeskMessage);
-        }
+        winston.debug("(tgm) [TiledeskChannel] tiledeskMessage:", tiledeskMessage);
 
         return axios({
           url: this.API_URL + `/${this.settings.project_id}/requests/${request_id}/messages`,
@@ -131,27 +125,39 @@ class TiledeskChannel {
           },
           data: tiledeskMessage,
           method: 'POST'
-        }).then((response) => {
-
-          if (this.log) {
-            console.log("[Tiledesk Channel] send message response: ", response.status, response.statusText);  
-          }
-          
-          return response.data;
+        }).then((response) => {          
+          return response;
 
         }).catch((err) => {
-          console.error("[Tiledesk Channel ERROR] send message: " + err);
+          winston.error("(tgm) [TiledeskChannel] send message error: " + err);
         })
       }).catch((err) => {
-        console.error("[Tiledesk Channel ERROR]  get requests: " + err);
+        winston.error("(tgm) [TiledeskChannel] get requests error: " + err);
       })
 
 
     }).catch((err) => {
-      console.error("[Tiledesk Channel ERROR] sign in error: " + err);
+      winston.error("(tgm) [TiledeskChannel] sign in error: " + err);
     })
       
       
+  }
+
+  async getDepartments() {
+
+    return await axios({
+      url: this.API_URL + "/" + this.settings.project_id + "/departments/allstatus",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': this.settings.token 
+      },
+      method: 'GET'
+    }).then((response) => {
+      winston.debug("(tgm) [TiledeskChannel] get departments response.data: ", response.data)
+      return response.data;
+    }).catch((err) => {
+      winston.error("(tgm) [TiledeskChannel] get departments error: ", err);
+    })
   }
 
 }

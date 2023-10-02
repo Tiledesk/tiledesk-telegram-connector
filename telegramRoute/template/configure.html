@@ -162,8 +162,30 @@
               </div>
             </div>
 
+            <!-- Departments -->
+            <div class="form-group" style="width: 522px;">
+              <label class="input-label" for="department">Department <span style="font-weight: normal;">(Optional)</span></label>
+              <div style="display: flex; flex-direction: row; align-items: center;">
+                <select class="custom-select" name="department" class="form-control">
+                {{#each departments}}
+                  {{#if (isEqual _id ../department_id)}}
+                  <option value="{{ _id }}" selected>{{ name }}</option>
+                  {{else}}
+                  <option value="{{ _id }}">{{ name }}</option>
+                  {{/if}}
+                {{/each}}
+                </select>
+                <span style="margin-left: 10px;">
+                <i class="fa fa-question-circle custom-tooltip">
+                  <span class="custom-tooltiptext">Select the department where you want to open conversations coming from WhatsApp. Conversations are sent on the Default Department by default.</span>
+                </i>
+              </span>
+              </div>
+            </div>
+
             <input type="hidden" name="project_id" value="{{ project_id }}" />
             <input type="hidden" name="token" value="{{ token }}" />
+            
 
             {{#if telegram_token}}
               <div style="width: 500px; text-align: right;">
