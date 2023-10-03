@@ -1185,3 +1185,45 @@ info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
 info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
 info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) /configure
+verbose: No Doc found!
+error: (tgm) [TiledeskChannel] get departments error:  Invalid value "undefined" for header "Authorization" {"code":"ERR_HTTP_INVALID_HEADER_VALUE","stack":"TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value \"undefined\" for header \"Authorization\"\n    at ClientRequest.setHeader (node:_http_outgoing:579:3)\n    at new ClientRequest (node:_http_client:256:14)\n    at Object.request (node:https:353:10)\n    at RedirectableRequest._performRequest (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/follow-redirects/index.js:284:24)\n    at new RedirectableRequest (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/follow-redirects/index.js:66:8)\n    at Object.request (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/follow-redirects/index.js:523:14)\n    at dispatchHttpRequest (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/axios/lib/adapters/http.js:262:25)\n    at new Promise (<anonymous>)\n    at httpAdapter (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/axios/lib/adapters/http.js:49:10)"}
+verbose: (tgm) /configure
+error: uncaughtException: Cannot set headers after they are sent to the client
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:371:5)
+    at ServerResponse.setHeader (node:_http_outgoing:576:11)
+    at ServerResponse.header (/home/runner/tiledesk-telegram-connector/node_modules/express/lib/response.js:794:10)
+    at ServerResponse.send (/home/runner/tiledesk-telegram-connector/node_modules/express/lib/response.js:174:12)
+    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:222:9
+    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:721:9 {"date":"Tue Oct 03 2023 09:50:01 GMT+0000 (Coordinated Universal Time)","error":{"code":"ERR_HTTP_HEADERS_SENT"},"exception":true,"os":{"loadavg":[82.54,41.64,30.11],"uptime":10390.15},"process":{"argv":["/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","/tmp/prybar-nodejs-002981346.js"],"cwd":"/home/runner/tiledesk-telegram-connector","execPath":"/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","gid":1000,"memoryUsage":{"arrayBuffers":18540123,"external":21747357,"heapTotal":39317504,"heapUsed":26156408,"rss":82337792},"pid":11088,"uid":1000,"version":"v16.13.2"},"stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at new NodeError (node:internal/errors:371:5)\n    at ServerResponse.setHeader (node:_http_outgoing:576:11)\n    at ServerResponse.header (/home/runner/tiledesk-telegram-connector/node_modules/express/lib/response.js:794:10)\n    at ServerResponse.send (/home/runner/tiledesk-telegram-connector/node_modules/express/lib/response.js:174:12)\n    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:222:9\n    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:721:9","trace":[{"column":5,"file":"node:internal/errors","function":"new NodeError","line":371,"method":null,"native":false},{"column":11,"file":"node:_http_outgoing","function":"ServerResponse.setHeader","line":576,"method":"setHeader","native":false},{"column":10,"file":"/home/runner/tiledesk-telegram-connector/node_modules/express/lib/response.js","function":"ServerResponse.header","line":794,"method":"header","native":false},{"column":12,"file":"/home/runner/tiledesk-telegram-connector/node_modules/express/lib/response.js","function":"ServerResponse.send","line":174,"method":"send","native":false},{"column":9,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/index.js","function":null,"line":222,"method":null,"native":false},{"column":9,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/index.js","function":null,"line":721,"method":null,"native":false}]}
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) /configure
+verbose: No Doc found!
+error: (tgm) [TiledeskChannel] get departments error:  Invalid value "undefined" for header "Authorization" {"code":"ERR_HTTP_INVALID_HEADER_VALUE","stack":"TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value \"undefined\" for header \"Authorization\"\n    at ClientRequest.setHeader (node:_http_outgoing:579:3)\n    at new ClientRequest (node:_http_client:256:14)\n    at Object.request (node:https:353:10)\n    at RedirectableRequest._performRequest (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/follow-redirects/index.js:284:24)\n    at new RedirectableRequest (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/follow-redirects/index.js:66:8)\n    at Object.request (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/follow-redirects/index.js:523:14)\n    at dispatchHttpRequest (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/axios/lib/adapters/http.js:262:25)\n    at new Promise (<anonymous>)\n    at httpAdapter (/home/runner/tiledesk-telegram-connector/telegramRoute/node_modules/axios/lib/adapters/http.js:49:10)"}
+error: uncaughtException: Cannot read properties of undefined (reading 'length')
+TypeError: Cannot read properties of undefined (reading 'length')
+    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:193:46 {"date":"Tue Oct 03 2023 09:52:45 GMT+0000 (Coordinated Universal Time)","error":{},"exception":true,"os":{"loadavg":[41.44,50.33,36],"uptime":10554.11},"process":{"argv":["/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","/tmp/prybar-nodejs-151596039.js"],"cwd":"/home/runner/tiledesk-telegram-connector","execPath":"/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","gid":1000,"memoryUsage":{"arrayBuffers":18380876,"external":19888923,"heapTotal":56619008,"heapUsed":23512392,"rss":76292096},"pid":11802,"uid":1000,"version":"v16.13.2"},"stack":"TypeError: Cannot read properties of undefined (reading 'length')\n    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:193:46","trace":[{"column":46,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/index.js","function":null,"line":193,"method":null,"native":false}]}

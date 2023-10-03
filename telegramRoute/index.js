@@ -19,7 +19,7 @@ const { MessageHandler } = require('./tiledesk/MessageHandler');
 // mongo
 const { KVBaseMongo } = require('./tiledesk/KVBaseMongo');
 const kvbase_collection = 'kvstore';
-const db = new KVBaseMongo({KVBASE_COLLECTION: kvbase_collection, log: false});
+const db = new KVBaseMongo({ KVBASE_COLLECTION: kvbase_collection, log: false });
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -119,7 +119,7 @@ router.post('/install', async (req, res) => {
     winston.error("(tgm) installation error: ", err.data)
     res.send("An error occurred during the installation");
   })
-  
+
 })
 
 router.post('/uninstall', async (req, res) => {
@@ -168,6 +168,20 @@ router.get('/configure', async (req, res) => {
   projectId = req.query.project_id;
   token = req.query.token;
 
+  if (!projectId || !token) {
+    let error_message = "Query params project_id and token are required."
+    readHTMLFile('/error.html', (err, html) => {
+      var template = handlebars.compile(html);
+
+      var replacements = {
+        app_version: pjson.version,
+        error_message: error_message
+      }
+      var html = template(replacements);
+      return res.send(html);
+    })
+  }
+
   let CONTENT_KEY = "telegram-" + projectId;
 
   let settings = await db.get(CONTENT_KEY);
@@ -176,7 +190,7 @@ router.get('/configure', async (req, res) => {
   // get departments
   const tdChannel = new TiledeskChannel({ settings: { project_id: projectId, token: token }, API_URL: API_URL })
   let departments = await tdChannel.getDepartments(token);
-  //winston.debug("(wab) found " + departments.length + " departments")
+  winston.debug("(wab) found " + departments.length + " departments")
 
   if (settings) {
     var replacements = {
@@ -353,7 +367,7 @@ router.post('/disconnect', async (req, res) => {
 
   const tdChannel = new TiledeskChannel({ settings: { project_id: projectId, token: token }, API_URL: API_URL })
   const tdClient = new TiledeskSubscriptionClient({ API_URL: API_URL, project_id: projectId, token: token, log: false })
-  
+
   let departments = await tdChannel.getDepartments(token);
 
   tdClient.unsubscribe(subscriptionId).then((data) => {
@@ -394,7 +408,7 @@ router.post('/tiledesk', async (req, res) => {
     commands = attributes.commands;
   }
 
-  
+
   let sender_id = tiledeskChannelMessage.sender;
 
   if (sender_id.indexOf("telegram") > -1) {
@@ -463,7 +477,7 @@ router.post('/tiledesk', async (req, res) => {
           winston.error("(tgm) telegramJsonMessage is undefined!");
         }
       }
-      
+
       //wait
       if (command.type === "wait") {
         setTimeout(() => {
@@ -492,7 +506,7 @@ router.post('/tiledesk', async (req, res) => {
         winston.error("(tgm) send message error: ", err);
       })
     }
-    
+
   } else {
     winston.debug("(wab) no command, no text --> skip");
   }
@@ -533,7 +547,7 @@ router.post('/tiledesk', async (req, res) => {
 router.post('/telegram', async (req, res) => {
   winston.verbose("(tgm) Message received from Telegram");
   winston.debug("(tgm) telegramChannelMessage: ", req.body);
-  
+
   let projectId = req.query.project_id;
 
   if (!req.body.message && !req.body.callback_query) {
@@ -629,8 +643,8 @@ router.post('/telegram', async (req, res) => {
 
     const tdChannel = new TiledeskChannel({ settings: settings, API_URL: API_URL });
     const response = await tdChannel.send(tiledeskJsonMessage, message_info, settings.department_id);
-    winston.verbose("(tgm) Message sent to Tiledesk: ", response.status, response.statusText);  
-    
+    winston.verbose("(tgm) Message sent to Tiledesk: ", response.status, response.statusText);
+
     res.sendStatus(200);
   } else {
     res.sendStatus(400);
