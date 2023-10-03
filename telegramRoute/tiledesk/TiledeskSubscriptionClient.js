@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-const winston = require('./winston');
+const winston = require('../winston');
 
 class TiledeskSubscriptionClient {
 

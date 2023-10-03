@@ -1169,3 +1169,11 @@ info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
 info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
 info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.

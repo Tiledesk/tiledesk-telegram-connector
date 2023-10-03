@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
-const winston = require('./winston');
+const winston = require('../winston');
 
 class TiledeskChannel {
 
@@ -131,7 +131,7 @@ class TiledeskChannel {
 
         }).catch((err) => {
           winston.error("(tgm) [TiledeskChannel] send message error: " + err);
-        })wi
+        })
       }).catch((err) => {
         winston.error("(tgm) [TiledeskChannel] get requests error: " + err);
       })

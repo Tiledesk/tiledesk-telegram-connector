@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const FormData = require('form-data');
-const winston = require('./winston');
+const winston = require('../winston');
 
 class TiledeskTelegram {
 
