@@ -176,7 +176,7 @@ router.get('/configure', async (req, res) => {
   // get departments
   const tdChannel = new TiledeskChannel({ settings: { project_id: projectId, token: token }, API_URL: API_URL })
   let departments = await tdChannel.getDepartments(token);
-  winston.debug("(wab) found " + departments.length + " departments")
+  //winston.debug("(wab) found " + departments.length + " departments")
 
   if (settings) {
     var replacements = {
