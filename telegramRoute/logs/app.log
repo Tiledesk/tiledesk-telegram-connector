@@ -1227,3 +1227,12 @@ error: (tgm) [TiledeskChannel] get departments error:  Invalid value "undefined"
 error: uncaughtException: Cannot read properties of undefined (reading 'length')
 TypeError: Cannot read properties of undefined (reading 'length')
     at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:193:46 {"date":"Tue Oct 03 2023 09:52:45 GMT+0000 (Coordinated Universal Time)","error":{},"exception":true,"os":{"loadavg":[41.44,50.33,36],"uptime":10554.11},"process":{"argv":["/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","/tmp/prybar-nodejs-151596039.js"],"cwd":"/home/runner/tiledesk-telegram-connector","execPath":"/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","gid":1000,"memoryUsage":{"arrayBuffers":18380876,"external":19888923,"heapTotal":56619008,"heapUsed":23512392,"rss":76292096},"pid":11802,"uid":1000,"version":"v16.13.2"},"stack":"TypeError: Cannot read properties of undefined (reading 'length')\n    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:193:46","trace":[{"column":46,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/index.js","function":null,"line":193,"method":null,"native":false}]}
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) /configure

@@ -180,6 +180,7 @@ router.get('/configure', async (req, res) => {
       var html = template(replacements);
       return res.send(html);
     })
+    return
   }
 
   let CONTENT_KEY = "telegram-" + projectId;
