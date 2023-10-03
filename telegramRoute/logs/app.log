@@ -1236,3 +1236,196 @@ info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
 info: (tgm) KVBaseMongo succesfully connected.
 verbose: (tgm) /configure
+verbose: (tgm) /configure
+verbose: (tgm) Message received from Telegram
+verbose: (tgm) tiledeskJsonMessage:  {"channel":{"name":"telegram"},"senderFullname":"Giovanni Troisi","text":"/start"}
+verbose: (tgm) Message sent to Tiledesk: 
+verbose: (tgm) Message received from Tiledesk
+info: (tgm) tiledeskChannelMessage:  {"__v":0,"_id":"651bec632261f8002e13bc67","channel":{"name":"telegram"},"channel_type":"group","createdAt":"2023-10-03T10:26:43.868Z","createdBy":"telegram-238079497","id_project":"62c3f10152dc7400352bab0d","recipient":"support-group-62c3f10152dc7400352bab0d-94d06c0c-telegram-238079497","request":{"__v":0,"_id":"651a9f251c523d002cbcc3f1","assigned_at":"2023-10-02T10:44:53.338Z","channel":{"name":"telegram"},"channelOutbound":{"name":"chat21"},"createdAt":"2023-10-02T10:44:53.366Z","createdBy":"telegram-238079497","department":{"__v":0,"_id":"62c3f10152dc7400352bab11","bot":{"__v":0,"_id":"651a732887dfac003c8336b6","attributes":{"variables":{"email_address":"email_address","firstname":"firstname","gpt_reply":"gpt_reply","gpt_source":"gpt_source","gpt_success":"gpt_success","kb_reply":"kb_reply","kb_source":"kb_source","numero_fattura":"numero_fattura","order_number":"order_number","valutazione":"valutazione"}},"certified":false,"certifiedTags":[],"createdAt":"2023-10-02T07:37:12.208Z","createdBy":"5faba2254e3e0e003470a8b9","id_project":"62c3f10152dc7400352bab0d","intentsEngine":"none","language":"en","name":"Deghi DemoBot - Clone","public":false,"score":0,"secret":"e06eece4-03c5-417a-9aa0-9e4800feae06","tags":[],"trained":true,"trashed":false,"type":"tilebot","updatedAt":"2023-10-03T10:26:16.979Z","url":"https://tiledesk-server-pre.herokuapp.com/modules/tilebot/ext/651bec482261f8002e13bc1a","webhook_enabled":false},"createdAt":"2022-07-05T08:06:25.836Z","createdBy":"5faba2254e3e0e003470a8b9","default":true,"id_bot":"651a732887dfac003c8336b6","id_group":null,"id_project":"62c3f10152dc7400352bab0d","name":"Default Department","routing":"assigned","status":1,"tags":[],"updatedAt":"2023-10-02T07:38:56.973Z"},"first_text":"/start","followers":[],"hasBot":true,"id_project":"62c3f10152dc7400352bab0d","lead":{"__v":0,"_id":"632db9cd279fe40035515884","createdAt":"2022-09-23T13:51:09.299Z","createdBy":"system","email":"na@telegram.com","fullname":"Giovanni Troisi","id_project":"62c3f10152dc7400352bab0d","lead_id":"telegram-238079497","status":100,"tags":[],"updatedAt":"2023-10-02T14:12:04.679Z"},"notes":[],"participants":["bot_651a732887dfac003c8336b6"],"participantsAgents":[],"participantsBots":["651a732887dfac003c8336b6"],"participatingAgents":[],"participatingBots":[{"__v":0,"_id":"651a732887dfac003c8336b6","attributes":{"variables":{"email_address":"email_address","firstname":"firstname","gpt_reply":"gpt_reply","gpt_source":"gpt_source","gpt_success":"gpt_success","kb_reply":"kb_reply","kb_source":"kb_source","numero_fattura":"numero_fattura","order_number":"order_number","valutazione":"valutazione"}},"certified":false,"certifiedTags":[],"createdAt":"2023-10-02T07:37:12.208Z","createdBy":"5faba2254e3e0e003470a8b9","id_project":"62c3f10152dc7400352bab0d","intentsEngine":"none","language":"en","name":"Deghi DemoBot - Clone","public":false,"score":0,"tags":[],"trained":true,"trashed":false,"type":"tilebot","updatedAt":"2023-10-03T10:26:16.979Z","url":"https://tiledesk-server-pre.herokuapp.com/modules/tilebot/ext/651bec482261f8002e13bc1a","webhook_enabled":false}],"preflight":false,"priority":"medium","request_id":"support-group-62c3f10152dc7400352bab0d-94d06c0c-telegram-238079497","requester":{"__v":0,"_id":"632db9cc279fe40035515870","createdAt":"2022-09-23T13:51:08.240Z","createdBy":"telegram-238079497","id_project":"62c3f10152dc7400352bab0d","last_login_at":"2022-09-23T09:27:35.044Z","number_assigned_requests":0,"role":"user","status":"active","tags":[],"updatedAt":"2022-09-23T13:51:08.240Z","user_available":true,"uuid_user":"telegram-238079497"},"smartAssignment":true,"snapshot":{"availableAgentsCount":1,"department":{"__v":0,"_id":"62c3f10152dc7400352bab11","createdAt":"2022-07-05T08:06:25.836Z","createdBy":"5faba2254e3e0e003470a8b9","default":true,"id_bot":"651a732887dfac003c8336b6","id_group":null,"id_project":"62c3f10152dc7400352bab0d","name":"Default Department","routing":"assigned","status":1,"tags":[],"updatedAt":"2022-07-05T08:06:25.836Z"},"lead":{"__v":0,"_id":"632db9cd279fe40035515884","createdAt":"2023-10-02T14:12:04.712Z","createdBy":"system","email":"na@telegram.com","fullname":"Giovanni Troisi","id_project":"62c3f10152dc7400352bab0d","lead_id":"telegram-238079497","status":100,"tags":[],"updatedAt":"2023-10-02T14:12:04.712Z"},"requester":{"__v":0,"_id":"632db9cc279fe40035515870","createdAt":"2022-09-23T13:51:08.240Z","createdBy":"telegram-238079497","id_project":"62c3f10152dc7400352bab0d","last_login_at":"2022-09-23T09:27:35.044Z","number_assigned_requests":0,"role":"user","status":"active","tags":[],"updatedAt":"2022-09-23T13:51:08.240Z","user_available":true,"uuid_user":"telegram-238079497"}},"status":200,"tags":[],"ticket_id":661,"updatedAt":"2023-10-02T14:12:04.712Z"},"sender":"telegram-238079497","senderFullname":"Giovanni Troisi","status":0,"text":"/start","type":"text","updatedAt":"2023-10-03T10:26:43.868Z"}
+verbose: (tgm) Skip same sender
+verbose: (tgm) Message received from Tiledesk
+info: (tgm) tiledeskChannelMessage:  {"__v":0,"_id":"651bec642261f8002e13bc85","attributes":{"commands":[{"time":500,"type":"wait"},{"message":{"attributes":{"attachment":{"buttons":[],"type":"template"}},"text":"Ciao, benvenuto sul Chatbot di Deghi","type":"text"},"type":"message"},{"time":1000,"type":"wait"},{"message":{"attributes":{"attachment":{"buttons":[{"action":"#60eb8ae2-292b-415d-a9b0-aea8d501180b","attributes":"","link":"","show_echo":true,"target":"blank","type":"action","uid":"lm0mqz5l","value":"Gestione fatture"},{"action":"#9e9d86b6-219f-4036-b717-4756b3c8cd76","attributes":"","link":"","show_echo":true,"target":"blank","type":"action","uid":"lm0mrnzj","value":"Ordini e Spedizioni"},{"action":"#a8d73505-f946-42d4-98b5-fe828a9a89c3","attributes":"","link":"","show_echo":true,"target":"blank","type":"action","uid":"lm0msb2y","value":"Configuratore"},{"action":"","attributes":"","link":"https://www.deghi.it/","show_echo":true,"target":"blank","type":"url","uid":"28b4df2c8a944027ad80bc9908605377","value":"Maggiori info"}],"type":"template"}},"text":"Seleziona una categoria dal menù oppure fai una domanda","type":"text"},"type":"message"}],"disableInputMessage":false,"fillParams":true,"intentName":"welcome"},"channel":{"name":"chat21"},"channel_type":"group","createdAt":"2023-10-03T10:26:44.441Z","createdBy":"651a732887dfac003c8336b6","id_project":"62c3f10152dc7400352bab0d","recipient":"support-group-62c3f10152dc7400352bab0d-94d06c0c-telegram-238079497","request":{"__v":0,"_id":"651a9f251c523d002cbcc3f1","assigned_at":"2023-10-02T10:44:53.338Z","channel":{"name":"telegram"},"channelOutbound":{"name":"chat21"},"createdAt":"2023-10-02T10:44:53.366Z","createdBy":"telegram-238079497","department":{"__v":0,"_id":"62c3f10152dc7400352bab11","bot":{"__v":0,"_id":"651a732887dfac003c8336b6","attributes":{"variables":{"email_address":"email_address","firstname":"firstname","gpt_reply":"gpt_reply","gpt_source":"gpt_source","gpt_success":"gpt_success","kb_reply":"kb_reply","kb_source":"kb_source","numero_fattura":"numero_fattura","order_number":"order_number","valutazione":"valutazione"}},"certified":false,"certifiedTags":[],"createdAt":"2023-10-02T07:37:12.208Z","createdBy":"5faba2254e3e0e003470a8b9","id_project":"62c3f10152dc7400352bab0d","intentsEngine":"none","language":"en","name":"Deghi DemoBot - Clone","public":false,"score":0,"secret":"e06eece4-03c5-417a-9aa0-9e4800feae06","tags":[],"trained":true,"trashed":false,"type":"tilebot","updatedAt":"2023-10-03T10:26:16.979Z","url":"https://tiledesk-server-pre.herokuapp.com/modules/tilebot/ext/651bec482261f8002e13bc1a","webhook_enabled":false},"createdAt":"2022-07-05T08:06:25.836Z","createdBy":"5faba2254e3e0e003470a8b9","default":true,"id_bot":"651a732887dfac003c8336b6","id_group":null,"id_project":"62c3f10152dc7400352bab0d","name":"Default Department","routing":"assigned","status":1,"tags":[],"updatedAt":"2023-10-02T07:38:56.973Z"},"first_text":"/start","followers":[],"hasBot":true,"id_project":"62c3f10152dc7400352bab0d","lead":{"__v":0,"_id":"632db9cd279fe40035515884","createdAt":"2022-09-23T13:51:09.299Z","createdBy":"system","email":"na@telegram.com","fullname":"Giovanni Troisi","id_project":"62c3f10152dc7400352bab0d","lead_id":"telegram-238079497","status":100,"tags":[],"updatedAt":"2023-10-02T14:12:04.679Z"},"notes":[],"participants":["bot_651a732887dfac003c8336b6"],"participantsAgents":[],"participantsBots":["651a732887dfac003c8336b6"],"participatingAgents":[],"participatingBots":[{"__v":0,"_id":"651a732887dfac003c8336b6","attributes":{"variables":{"email_address":"email_address","firstname":"firstname","gpt_reply":"gpt_reply","gpt_source":"gpt_source","gpt_success":"gpt_success","kb_reply":"kb_reply","kb_source":"kb_source","numero_fattura":"numero_fattura","order_number":"order_number","valutazione":"valutazione"}},"certified":false,"certifiedTags":[],"createdAt":"2023-10-02T07:37:12.208Z","createdBy":"5faba2254e3e0e003470a8b9","id_project":"62c3f10152dc7400352bab0d","intentsEngine":"none","language":"en","name":"Deghi DemoBot - Clone","public":false,"score":0,"tags":[],"trained":true,"trashed":false,"type":"tilebot","updatedAt":"2023-10-03T10:26:16.979Z","url":"https://tiledesk-server-pre.herokuapp.com/modules/tilebot/ext/651bec482261f8002e13bc1a","webhook_enabled":false}],"preflight":false,"priority":"medium","request_id":"support-group-62c3f10152dc7400352bab0d-94d06c0c-telegram-238079497","requester":{"__v":0,"_id":"632db9cc279fe40035515870","createdAt":"2022-09-23T13:51:08.240Z","createdBy":"telegram-238079497","id_project":"62c3f10152dc7400352bab0d","last_login_at":"2022-09-23T09:27:35.044Z","number_assigned_requests":0,"role":"user","status":"active","tags":[],"updatedAt":"2022-09-23T13:51:08.240Z","user_available":true,"uuid_user":"telegram-238079497"},"smartAssignment":true,"snapshot":{"availableAgentsCount":1,"department":{"__v":0,"_id":"62c3f10152dc7400352bab11","createdAt":"2022-07-05T08:06:25.836Z","createdBy":"5faba2254e3e0e003470a8b9","default":true,"id_bot":"651a732887dfac003c8336b6","id_group":null,"id_project":"62c3f10152dc7400352bab0d","name":"Default Department","routing":"assigned","status":1,"tags":[],"updatedAt":"2022-07-05T08:06:25.836Z"},"lead":{"__v":0,"_id":"632db9cd279fe40035515884","createdAt":"2023-10-02T14:12:04.712Z","createdBy":"system","email":"na@telegram.com","fullname":"Giovanni Troisi","id_project":"62c3f10152dc7400352bab0d","lead_id":"telegram-238079497","status":100,"tags":[],"updatedAt":"2023-10-02T14:12:04.712Z"},"requester":{"__v":0,"_id":"632db9cc279fe40035515870","createdAt":"2022-09-23T13:51:08.240Z","createdBy":"telegram-238079497","id_project":"62c3f10152dc7400352bab0d","last_login_at":"2022-09-23T09:27:35.044Z","number_assigned_requests":0,"role":"user","status":"active","tags":[],"updatedAt":"2022-09-23T13:51:08.240Z","user_available":true,"uuid_user":"telegram-238079497"}},"status":200,"tags":[],"ticket_id":661,"updatedAt":"2023-10-02T14:12:04.712Z"},"sender":"651a732887dfac003c8336b6","senderFullname":"Deghi DemoBot - Clone","status":0,"text":"Ciao, benvenuto sul Chatbot di Deghi\n\nSeleziona una categoria dal menù oppure fai una domanda","type":"text","updatedAt":"2023-10-03T10:26:44.441Z"}
+verbose: (tgm) telegramJsonMessage {"chat_id":"238079497","parse_mode":"markdown","text":"Ciao, benvenuto sul Chatbot di Deghi"}
+verbose: (tgm) [TiledeskTelegram] Sending message...
+verbose: (tgm) Message sent to Telegram
+verbose: (wab) Message sent to Telegram! 200 OK
+verbose: (tgm) telegramJsonMessage {"chat_id":"238079497","parse_mode":"markdown","reply_markup":{"inline_keyboard":[[{"callback_data":"{\"t\":\"a\",\"action\":\"#60eb8ae2-292b-415d-a9b0-aea8d501180b\"}","text":"Gestione fatture"}],[{"callback_data":"{\"t\":\"a\",\"action\":\"#9e9d86b6-219f-4036-b717-4756b3c8cd76\"}","text":"Ordini e Spedizioni"}],[{"callback_data":"{\"t\":\"a\",\"action\":\"#a8d73505-f946-42d4-98b5-fe828a9a89c3\"}","text":"Configuratore"}],[{"text":"Maggiori info","url":"https://www.deghi.it/"}]],"one_time_keyboard":false,"resize_keyboard":true},"text":"Seleziona una categoria dal menù oppure fai una domanda"}
+verbose: (tgm) [TiledeskTelegram] Sending message...
+verbose: (tgm) Message sent to Telegram
+verbose: (wab) Message sent to Telegram! 200 OK
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.

@@ -95,7 +95,7 @@ class TiledeskTelegramTranslator {
               //let cb_value = (btn.value.length > 36) ? btn.value.substr(0, 36) : btn.value;
               
               let action_btn = {
-                t: 'a',
+                t: btn.type.substring(0,1),
                 action: btn.action
               }
               inline_buttons.push([{ text: text_value, callback_data: JSON.stringify(action_btn) }])
@@ -106,7 +106,7 @@ class TiledeskTelegramTranslator {
               let text_value = (btn.value.length > 38) ? btn.value.substr(0, 36) + '..' : btn.value;
               let cb_value = (btn.value.length > 38) ? btn.value.substr(0, 38) : btn.value;
               let text_btn = {
-                t: 't',
+                t: btn.type.substring(0,1),
                 value: cb_value
               }
               inline_buttons.push([{ text: text_value, callback_data: JSON.stringify(text_btn) }])
@@ -188,7 +188,7 @@ class TiledeskTelegramTranslator {
       // callback query
       let callback = telegramChannelMessage.callback_query;
       let data = JSON.parse(callback.data)
-
+      
       if (data.t === 'a') {
         var tiledeskMessage = {
           senderFullname: callback.from.first_name + " " + callback.from.last_name,

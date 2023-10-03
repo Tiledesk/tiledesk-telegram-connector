@@ -147,11 +147,17 @@ describe('Test Translator\n', function() {
       }
     }
     let telegram_receiver = tiledeskChannelMessage.recipient.substring(tiledeskChannelMessage.recipient.lastIndexOf("tel") + 3)
-    let btn = {
-      type: tiledeskChannelMessage.attributes.attachment.buttons[0].type,
+
+    let text_btn = {
+      t: tiledeskChannelMessage.attributes.attachment.buttons[0].type.substring(0,1),
       value: tiledeskChannelMessage.attributes.attachment.buttons[0].value
     }
-    let callback_data = JSON.stringify(btn);
+    let action_btn = {
+      t: tiledeskChannelMessage.attributes.attachment.buttons[2].type.substring(0,1),
+      action: tiledeskChannelMessage.attributes.attachment.buttons[2].action
+    }
+    let callback_data_text = JSON.stringify(text_btn);
+    let callback_data_action = JSON.stringify(action_btn);
 
 
     const tlr = new TiledeskTelegramTranslator();
@@ -164,9 +170,17 @@ describe('Test Translator\n', function() {
     assert(telegramJsonMessage.reply_markup != null);
     assert(telegramJsonMessage.reply_markup.inline_keyboard != null);
     assert(telegramJsonMessage.reply_markup.inline_keyboard.length === 3);
+    // text button
     assert(telegramJsonMessage.reply_markup.inline_keyboard[0][0].text === tiledeskChannelMessage.attributes.attachment.buttons[0].value);
     assert(telegramJsonMessage.reply_markup.inline_keyboard[0][0].callback_data != null);
-    assert(telegramJsonMessage.reply_markup.inline_keyboard[0][0].callback_data === callback_data);
+    assert(telegramJsonMessage.reply_markup.inline_keyboard[0][0].callback_data === callback_data_text);
+    // url button
+    assert(telegramJsonMessage.reply_markup.inline_keyboard[1][0].text === tiledeskChannelMessage.attributes.attachment.buttons[1].value);
+    assert(telegramJsonMessage.reply_markup.inline_keyboard[1][0].callback_data == null);
+    // action button
+    assert(telegramJsonMessage.reply_markup.inline_keyboard[2][0].text === tiledeskChannelMessage.attributes.attachment.buttons[2].value);
+    assert(telegramJsonMessage.reply_markup.inline_keyboard[2][0].callback_data != null);
+    assert(telegramJsonMessage.reply_markup.inline_keyboard[2][0].callback_data === callback_data_action);
     if (log) {
       console.log("\n(test) telegramJsonMessage: ", telegramJsonMessage);
     }
@@ -210,7 +224,7 @@ describe('Test Translator\n', function() {
           first_name: "John",
           last_name: "Doe",
         },
-        data: '{"type":"text","value":"Button 1"}'
+        data: '{"t":"t","value":"Button 1"}'
       }
     }
     let data = JSON.parse(telegramChannelMessage.callback_query.data);
@@ -236,7 +250,7 @@ describe('Test Translator\n', function() {
           first_name: "John",
           last_name: "Doe",
         },
-        data: '{"type":"action","action":"↩︎ Back"}'
+        data: '{"t":"a","action":"↩︎ Back"}'
       }
     }
     let data = JSON.parse(telegramChannelMessage.callback_query.data);
@@ -245,6 +259,7 @@ describe('Test Translator\n', function() {
     assert(tlr != null);
     const tiledeskJsonMessage = await tlr.toTiledesk(telegramChannelMessage);
     assert(tiledeskJsonMessage != null);
+    console.log("--> tiledeskJsonMessage: ", JSON.stringify(tiledeskJsonMessage, null, 2))
     assert(tiledeskJsonMessage.text === ' ');
     assert(tiledeskJsonMessage.type === 'text');
     assert(tiledeskJsonMessage.attributes != null);
