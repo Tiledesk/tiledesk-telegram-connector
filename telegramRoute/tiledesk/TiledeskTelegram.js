@@ -68,7 +68,6 @@ class TiledeskTelegram {
         this.sendMessage(telegram_token, message).then((response) => {
           resolve(response);
         }).catch((err) => {
-          winston.error("err: ", err)
           reject(err);
         })
       }
@@ -116,7 +115,7 @@ class TiledeskTelegram {
 
   async sendVideo(telegram_token, message) {
     winston.verbose("(tgm) [TiledeskTelegram] Seding message...");
-    winsto.debug("(tgm) [TiledeskTelegram] Sending message...", message);
+    winston.debug("(tgm) [TiledeskTelegram] Sending message...", message);
 
     return await axios({
       url: this.TELEGRAM_API_URL + `${telegram_token}/sendVideo`,

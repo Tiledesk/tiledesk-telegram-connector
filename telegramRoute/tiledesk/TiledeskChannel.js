@@ -43,11 +43,15 @@ class TiledeskChannel {
 
   }
 
-  async send(tiledeskMessage, messageInfo) {
+  async send(tiledeskMessage, messageInfo, department_id) {
 
     let channel;
     let new_request_id;
     var payload = {};
+
+    if (department_id) {
+      tiledeskMessage.departmentid = department_id;
+    }
 
     if (messageInfo.channel == "whatsapp") {
       channel = messageInfo.whatsapp;

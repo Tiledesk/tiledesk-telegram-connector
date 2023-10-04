@@ -191,7 +191,7 @@ router.get('/configure', async (req, res) => {
   // get departments
   const tdChannel = new TiledeskChannel({ settings: { project_id: projectId, token: token }, API_URL: API_URL })
   let departments = await tdChannel.getDepartments(token);
-  winston.debug("(wab) found " + departments.length + " departments")
+  winston.debug("(tgm) found " + departments.length + " departments")
 
   if (settings) {
     var replacements = {
@@ -397,7 +397,7 @@ router.post('/disconnect', async (req, res) => {
 
 router.post('/tiledesk', async (req, res) => {
   winston.verbose("(tgm) Message received from Tiledesk")
-  winston.info("(tgm) tiledeskChannelMessage: ", req.body.payload);
+  winston.debug("(tgm) tiledeskChannelMessage: ", req.body.payload);
 
   var tiledeskChannelMessage = req.body.payload;
   let projectId = tiledeskChannelMessage.id_project;
@@ -414,28 +414,26 @@ router.post('/tiledesk', async (req, res) => {
 
   if (sender_id.indexOf("telegram") > -1) {
     winston.verbose("(tgm) Skip same sender");
-    return res.send(200);
+    return res.sendStatus(200);
   }
 
   if (attributes && attributes.subtype === "info") {
-    winston.verbose("(tgm) Skip subtype: ", attributes.subtype);
-    return res.send(200);
+    winston.verbose("(tgm) Skip subtype: " + attributes.subtype);
+    return res.sendStatus(200);
   }
 
   let CONTENT_KEY = "telegram-" + projectId;
   let settings = await db.get(CONTENT_KEY);
 
   if (attributes && attributes.subtype === 'info/support') {
-    //console.log("subtype: ", attributes.subtype);
-    //console.log("show info message: ", settings.show_info_message);
     // Temporary solve the bug of multiple lead update messages
     if (attributes.messagelabel.key == 'LEAD_UPDATED') {
       winston.debug("(tgm) Skip LEAD_UPDATED");
-      return res.send(200);
+      return res.sendStatus(200);
     }
 
     if (!settings.show_info_message || settings.show_info_message == false) {
-      return res.send(200);
+      return res.sendStatus(200);
     }
   }
 
@@ -459,11 +457,11 @@ router.post('/tiledesk', async (req, res) => {
         winston.debug("(tgm) message generated from commands: ", tiledeskCommandMessage);
 
         let telegramJsonMessage = await tlr.toTelegram(tiledeskCommandMessage, chat_id);
-        winston.verbose("(tgm) telegramJsonMessage", telegramJsonMessage)
+        winston.debug("(tgm) telegramJsonMessage", telegramJsonMessage)
 
         if (telegramJsonMessage) {
           ttClient.send(settings.telegram_token, telegramJsonMessage).then((response) => {
-            winston.verbose("(wab) Message sent to Telegram! " + response.status + " " + response.statusText);
+            winston.verbose("(tgm) Message sent to Telegram! " + response.status + " " + response.statusText);
             i += 1;
             if (i < commands.length) {
               execute(commands[i]);
@@ -486,7 +484,7 @@ router.post('/tiledesk', async (req, res) => {
           if (i < commands.length) {
             execute(commands[i]);
           } else {
-            winston.debug("(wab) End of commands")
+            winston.debug("(tgm) End of commands")
           }
         }, command.time)
       }
@@ -497,19 +495,19 @@ router.post('/tiledesk', async (req, res) => {
   else if (tiledeskChannelMessage.text || tiledeskChannelMessage.metadata) {
 
     let telegramJsonMessage = await tlr.toTelegram(tiledeskChannelMessage, chat_id);
-    winston.verbose("(tgm) telegramJsonMessage", telegramJsonMessage)
+    winston.debug("(tgm) telegramJsonMessage", telegramJsonMessage)
 
     if (telegramJsonMessage) {
 
       ttClient.send(settings.telegram_token, telegramJsonMessage).then((response) => {
-        winston.verbose("(wab) Message sent to Telegram! " + response.status + " " + response.statusText);
+        winston.verbose("(tgm) Message sent to Telegram! " + response.status + " " + response.statusText);
       }).catch((err) => {
         winston.error("(tgm) send message error: ", err);
       })
     }
 
   } else {
-    winston.debug("(wab) no command, no text --> skip");
+    winston.debug("(tgm) no command, no text --> skip");
   }
 
   return res.sendStatus(200);
@@ -622,7 +620,7 @@ router.post('/telegram', async (req, res) => {
     tiledeskJsonMessage = await tlr.toTiledesk(telegramChannelMessage);
   }
 
-  winston.verbose("(tgm) tiledeskJsonMessage: ", tiledeskJsonMessage);
+  winston.debug("(tgm) tiledeskJsonMessage: ", tiledeskJsonMessage);
 
   if (tiledeskJsonMessage) {
 
@@ -644,7 +642,7 @@ router.post('/telegram', async (req, res) => {
 
     const tdChannel = new TiledeskChannel({ settings: settings, API_URL: API_URL });
     const response = await tdChannel.send(tiledeskJsonMessage, message_info, settings.department_id);
-    winston.verbose("(tgm) Message sent to Tiledesk: ", response.status, response.statusText);
+    winston.verbose("(tgm) Message sent to Tiledesk! " + response.status + " " + response.statusText);
 
     res.sendStatus(200);
   } else {
