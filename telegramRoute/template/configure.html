@@ -166,7 +166,7 @@
             <div class="form-group" style="width: 522px;">
               <label class="input-label" for="department">Department <span style="font-weight: normal;">(Optional)</span></label>
               <div style="display: flex; flex-direction: row; align-items: center;">
-                <select class="custom-select" name="department" class="form-control">
+                <select class="custom-select" name="department" class="form-control" placeholder="default">
                 {{#each departments}}
                   {{#if (isEqual _id ../department_id)}}
                   <option value="{{ _id }}" selected>{{ name }}</option>

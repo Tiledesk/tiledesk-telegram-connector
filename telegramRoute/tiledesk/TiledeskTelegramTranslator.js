@@ -23,9 +23,9 @@ class TiledeskTelegramTranslator {
   }
 
   async toTelegram(tiledeskChannelMessage, telegram_receiver) {
-  
+
     winston.debug("(tgm) [Translator] Tiledesk message: ", tiledeskChannelMessage);
-    
+
     let text = '';
     if (tiledeskChannelMessage.text) {
       text = tiledeskChannelMessage.text;
@@ -34,6 +34,12 @@ class TiledeskTelegramTranslator {
     const telegram_message = {
       chat_id: telegram_receiver,
       parse_mode: "markdown"
+    }
+
+    if (tiledeskChannelMessage.type === 'frame') {
+      text = text + "\n\n👉 " + tiledeskChannelMessage.metadata.src
+      telegram_message.text = text;
+      return telegram_message;
     }
 
     // Metadata
@@ -54,7 +60,7 @@ class TiledeskTelegramTranslator {
       }
 
       else if ((tiledeskChannelMessage.metadata.type && tiledeskChannelMessage.metadata.type.startsWith('application')) || tiledeskChannelMessage.type.startsWith('application')) {
-      //else if (tiledeskChannelMessage.metadata.type.startsWith('application')) {
+        //else if (tiledeskChannelMessage.metadata.type.startsWith('application')) {
 
         telegram_message.document = tiledeskChannelMessage.metadata.src;
         //telegram_message.caption = tiledeskChannelMessage.text.substr(tiledeskChannelMessage.text.indexOf(')') + 1);  
@@ -64,7 +70,9 @@ class TiledeskTelegramTranslator {
 
       else {
         winston.verbose("(tgm) [Translator] file type not supported");
+        return null;
       }
+      
       return telegram_message;
 
     }
@@ -75,7 +83,7 @@ class TiledeskTelegramTranslator {
         if (tiledeskChannelMessage.attributes.attachment.buttons) {
 
           let buttons = tiledeskChannelMessage.attributes.attachment.buttons;
-          
+
           // Issue: quick_replies and inline_buttons not supported togheter
           // Solution 1: create only inline_buttons 
           // Solution 2: send a message for type
@@ -93,9 +101,9 @@ class TiledeskTelegramTranslator {
             if (btn.type == 'action') {
               let text_value = (btn.value.length > 36) ? btn.value.substr(0, 34) + '..' : btn.value;
               //let cb_value = (btn.value.length > 36) ? btn.value.substr(0, 36) : btn.value;
-              
+
               let action_btn = {
-                t: btn.type.substring(0,1),
+                t: btn.type.substring(0, 1),
                 action: btn.action
               }
               inline_buttons.push([{ text: text_value, callback_data: JSON.stringify(action_btn) }])
@@ -106,7 +114,7 @@ class TiledeskTelegramTranslator {
               let text_value = (btn.value.length > 38) ? btn.value.substr(0, 36) + '..' : btn.value;
               let cb_value = (btn.value.length > 38) ? btn.value.substr(0, 38) : btn.value;
               let text_btn = {
-                t: btn.type.substring(0,1),
+                t: btn.type.substring(0, 1),
                 value: cb_value
               }
               inline_buttons.push([{ text: text_value, callback_data: JSON.stringify(text_btn) }])
@@ -163,8 +171,9 @@ class TiledeskTelegramTranslator {
           }
           */
 
-
-
+        } else {
+          winston.verbose("(tgm) [Translator] attributes attachment not supported");
+          return null;
         }
 
       } else {
@@ -183,12 +192,12 @@ class TiledeskTelegramTranslator {
   }
 
   async toTiledesk(telegramChannelMessage, telegram_token, media_url) {
-    
+
     if (telegramChannelMessage.callback_query) {
       // callback query
       let callback = telegramChannelMessage.callback_query;
       let data = JSON.parse(callback.data)
-      
+
       if (data.t === 'a') {
         var tiledeskMessage = {
           senderFullname: callback.from.first_name + " " + callback.from.last_name,
@@ -298,7 +307,7 @@ class TiledeskTelegramTranslator {
   // HTTP REQUEST
 
   static async myrequest(options, callback, log) {
-    
+
     return await axios({
       url: options.url,
       method: options.method,
@@ -306,7 +315,7 @@ class TiledeskTelegramTranslator {
       params: options.params,
       headers: options.headers
     }).then((res) => {
-      
+
       if (res && res.status == 200 && res.data) {
         if (callback) {
           callback(null, res.data);

@@ -19,7 +19,7 @@ class TiledeskChannel {
     * @param {string} config.API_URL Mandatory. Tiledesk api url.
     * @param {boolean} options.log Optional. If true HTTP requests are logged.
     */
-  
+
   constructor(config) {
     if (!config) {
       throw new Error('config is mandatory');
@@ -92,7 +92,7 @@ class TiledeskChannel {
 
     return await axios({
       url: this.API_URL + "/auth/signinWithCustomToken",
-      headers: {    
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': "JWT " + customToken
       },
@@ -130,22 +130,25 @@ class TiledeskChannel {
           },
           data: tiledeskMessage,
           method: 'POST'
-        }).then((response) => {          
+        }).then((response) => {
           return response;
 
         }).catch((err) => {
           winston.error("(tgm) [TiledeskChannel] send message error: " + err);
+          return err;
         })
       }).catch((err) => {
         winston.error("(tgm) [TiledeskChannel] get requests error: " + err);
+        return err;
       })
 
 
     }).catch((err) => {
       winston.error("(tgm) [TiledeskChannel] sign in error: " + err);
+      return err;
     })
-      
-      
+
+
   }
 
   async getDepartments() {
@@ -154,14 +157,15 @@ class TiledeskChannel {
       url: this.API_URL + "/" + this.settings.project_id + "/departments/allstatus",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': this.settings.token 
+        'Authorization': this.settings.token
       },
       method: 'GET'
     }).then((response) => {
       winston.debug("(tgm) [TiledeskChannel] get departments response.data: ", response.data)
       return response.data;
     }).catch((err) => {
-      winston.error("(tgm) [TiledeskChannel] get departments error: ", err);
+      winston.error("(tgm) [TiledeskChannel] get departments error: " + err.response.data);
+      return null;
     })
   }
 

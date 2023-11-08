@@ -191,7 +191,10 @@ router.get('/configure', async (req, res) => {
   // get departments
   const tdChannel = new TiledeskChannel({ settings: { project_id: projectId, token: token }, API_URL: API_URL })
   let departments = await tdChannel.getDepartments(token);
-  winston.debug("(tgm) found " + departments.length + " departments")
+
+  if (!departments) {
+    winston.verbose("(tgm) Unable to get departments for the project_id " + projectId);
+  }
 
   if (settings) {
     var replacements = {
@@ -240,6 +243,9 @@ router.post('/update', async (req, res) => {
 
   const tdChannel = new TiledeskChannel({ settings: { project_id: projectId, token: token }, API_URL: API_URL })
   let departments = await tdChannel.getDepartments(token);
+  if (!departments) {
+    winston.verbose("(tgm) Unable to get departments for the project_id " + projectId);
+  }
 
   if (settings) {
     settings.bot_name = bot_name;
@@ -370,6 +376,9 @@ router.post('/disconnect', async (req, res) => {
   const tdClient = new TiledeskSubscriptionClient({ API_URL: API_URL, project_id: projectId, token: token, log: false })
 
   let departments = await tdChannel.getDepartments(token);
+  if (!departments) {
+    winston.verbose("(tgm) Unable to get departments for the project_id " + projectId);
+  }
 
   tdClient.unsubscribe(subscriptionId).then((data) => {
 
@@ -455,6 +464,7 @@ router.post('/tiledesk', async (req, res) => {
       if (command.type === 'message') {
         let tiledeskCommandMessage = await messageHandler.generateMessageObject(command);
         winston.debug("(tgm) message generated from commands: ", tiledeskCommandMessage);
+        winston.info("(tgm) message generated from commands: ", tiledeskCommandMessage);
 
         let telegramJsonMessage = await tlr.toTelegram(tiledeskCommandMessage, chat_id);
         winston.debug("(tgm) telegramJsonMessage", telegramJsonMessage)

@@ -108,7 +108,7 @@ class TiledeskTelegram {
     }).then((response) => {
       return response;
     }).catch((err) => {
-      winston.error("(tgm) [TiledeskTelegram] send photo message error: ", err);
+      winston.error("(tgm) [TiledeskTelegram] send photo message error: " + err);
       throw err;
     })
   }
@@ -127,8 +127,8 @@ class TiledeskTelegram {
     }).then((response) => {
       return response;
     }).catch((err) => {
-      winston.error("(tgm) [TiledeskTelegram] send video message error: ", err);
-      throw err;
+      winston.error("(tgm) [TiledeskTelegram] send video message error: " + err);
+      return err;
     })
   }
 
@@ -146,8 +146,8 @@ class TiledeskTelegram {
     }).then((response) => {
       return response;
     }).catch((err) => {
-      winston.error("(tgm) [TiledeskTelegram] send document message error: ", err);
-      throw err;
+      winston.error("(tgm) [TiledeskTelegram] send document message error: " + err);
+      return err;
     })
   }
 
@@ -233,7 +233,8 @@ class TiledeskTelegram {
       winston.verbose("(tgm) [TiledeskTelegram] Download complete");
       return response.data
     }).catch((err) => {
-      winston.error("(tgm) [TiledeskTelegram] Download failed!: ", err);
+      winston.error("(tgm) [TiledeskTelegram] Download failed!: " + err);
+      return err;
     })
   }
 
@@ -259,7 +260,7 @@ class TiledeskTelegram {
         }
       }
     }).catch((err) => {
-      winston.error("(tgm) [TiledeskTelegram] An error occured: ", err.response.request.data);
+      winston.error("(tgm) [TiledeskTelegram] An error occured: ", err);
       if (callback) {
         callback("an error occured", null, null);
       }
