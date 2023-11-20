@@ -449,6 +449,33 @@ router.post('/tiledesk', async (req, res) => {
   let recipient_id = tiledeskChannelMessage.recipient;
   let chat_id = recipient_id.substring(recipient_id.lastIndexOf("-") + 1);
 
+  // Return an info message option
+  if (settings.expired &&
+    settings.expired === true) {
+
+    winston.verbose("settings expired: " + settings.expired);
+    let tiledeskJsonMessage = {
+      text: 'Expired. Upgrade Plan.',
+      sender: "system",
+      senderFullname: "System",
+      attributes: {
+        subtype: 'info'
+      },
+      channel: { name: 'telegram' }
+    }
+    let message_info = {
+      channel: "telegram",
+      telegram: {
+        from: chat_id,
+      }
+    }
+
+    const tdChannel = new TiledeskChannel({ settings: settings, API_URL: API_URL })
+    const response = await tdChannel.send(tiledeskJsonMessage, message_info, settings.department_id);
+    winston.verbose("(wab) Expiration message sent to Tiledesk")
+    return res.sendStatus(200);
+  }
+
   winston.debug("(tgm) attributes: " + attributes);
   winston.debug("(tgm) sender_id: " + sender_id);
   winston.debug("(tgm) chat_id: " + chat_id);
