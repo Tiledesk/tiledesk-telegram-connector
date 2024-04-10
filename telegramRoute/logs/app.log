@@ -2543,3 +2543,99 @@ info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
 info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
 info: (tgm) KVBaseMongo succesfully connected.
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) Message received from Tiledesk
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) Message received from Telegram
+verbose: (tgm) Message sent to Tiledesk! 200 OK
+verbose: (tgm) Message received from Tiledesk
+verbose: (tgm) Skip same sender
+verbose: (tgm) Message received from Tiledesk
+verbose: settings expired: true
+error: uncaughtException: message is not defined
+ReferenceError: message is not defined
+    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:469:15 {"date":"Mon Nov 20 2023 09:54:24 GMT+0000 (Coordinated Universal Time)","error":{},"exception":true,"os":{"loadavg":[21.58,21.52,28.7],"uptime":32694.19},"process":{"argv":["/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","/tmp/prybar-nodejs-811047510.js"],"cwd":"/home/runner/tiledesk-telegram-connector","execPath":"/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","gid":1000,"memoryUsage":{"arrayBuffers":18368468,"external":20460665,"heapTotal":24113152,"heapUsed":22097416,"rss":85315584},"pid":2647,"uid":1000,"version":"v16.13.2"},"stack":"ReferenceError: message is not defined\n    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:469:15","trace":[{"column":15,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/index.js","function":null,"line":469,"method":null,"native":false}]}
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) Message received from Tiledesk
+verbose: (tgm) Message received from Tiledesk
+verbose: settings expired: true
+error: uncaughtException: message is not defined
+ReferenceError: message is not defined
+    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:469:15 {"date":"Mon Nov 20 2023 09:56:55 GMT+0000 (Coordinated Universal Time)","error":{},"exception":true,"os":{"loadavg":[30.66,25.08,28.92],"uptime":32844.47},"process":{"argv":["/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","/tmp/prybar-nodejs-152011236.js"],"cwd":"/home/runner/tiledesk-telegram-connector","execPath":"/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","gid":1000,"memoryUsage":{"arrayBuffers":19044274,"external":21814116,"heapTotal":38268928,"heapUsed":25359696,"rss":78569472},"pid":4850,"uid":1000,"version":"v16.13.2"},"stack":"ReferenceError: message is not defined\n    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:469:15","trace":[{"column":15,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/index.js","function":null,"line":469,"method":null,"native":false}]}
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) Message received from Tiledesk
+verbose: settings expired: true
+verbose: (wab) Expiration message sent to Tiledesk
+verbose: (tgm) Message received from Tiledesk
+verbose: settings expired: true
+verbose: (wab) Expiration message sent to Tiledesk
+verbose: (tgm) Message received from Telegram
+verbose: (tgm) Message sent to Tiledesk! 200 OK
+verbose: (tgm) Message received from Tiledesk
+verbose: (tgm) Skip same sender
+verbose: (tgm) Message received from Tiledesk
+verbose: settings expired: true
+verbose: (wab) Expiration message sent to Tiledesk
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) Message received from Tiledesk
+verbose: settings expired: true
+error: uncaughtException: Cannot read properties of undefined (reading 'from')
+TypeError: Cannot read properties of undefined (reading 'from')
+    at TiledeskChannel.send (/home/runner/tiledesk-telegram-connector/telegramRoute/tiledesk/TiledeskChannel.js:71:126)
+    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:476:38 {"date":"Mon Nov 20 2023 09:58:48 GMT+0000 (Coordinated Universal Time)","error":{},"exception":true,"os":{"loadavg":[20.94,23.32,27.83],"uptime":32958.31},"process":{"argv":["/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","/tmp/prybar-nodejs-707770841.js"],"cwd":"/home/runner/tiledesk-telegram-connector","execPath":"/nix/store/ra8r42571xvv1m85wanh1ll9mxmp0mwl-nodejs-16.13.2/bin/node","gid":1000,"memoryUsage":{"arrayBuffers":18445658,"external":19953705,"heapTotal":56356864,"heapUsed":22678472,"rss":85065728},"pid":5256,"uid":1000,"version":"v16.13.2"},"stack":"TypeError: Cannot read properties of undefined (reading 'from')\n    at TiledeskChannel.send (/home/runner/tiledesk-telegram-connector/telegramRoute/tiledesk/TiledeskChannel.js:71:126)\n    at /home/runner/tiledesk-telegram-connector/telegramRoute/index.js:476:38","trace":[{"column":126,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/tiledesk/TiledeskChannel.js","function":"TiledeskChannel.send","line":71,"method":"send","native":false},{"column":38,"file":"/home/runner/tiledesk-telegram-connector/telegramRoute/index.js","function":null,"line":476,"method":null,"native":false}]}
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
+verbose: (tgm) Message received from Tiledesk
+verbose: settings expired: true
+verbose: (wab) Expiration message sent to Tiledesk
+verbose: (tgm) Message received from Tiledesk
+verbose: (tgm) Skip subtype: info
+verbose: KV_COLLECTION: 
+info: (tgm) Starting Telegram App: 
+info: (tgm) API_URL: https://tiledesk-server-pre.herokuapp.com
+info: (tgm) BASE_URL: https://tiledesk-telegram-connector.giovannitroisi3.repl.co
+info: (tgm) TELEGRAM_API_URL: https://api.telegram.org/bot
+info: (tgm) TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+info: (tgm) APPS_API_URL: https://tiledesk-apps.herokuapp.com
+info: (tgm) KVBaseMongo succesfully connected.
