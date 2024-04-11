@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+.glitchdotcom.json
+.node-gyp
+node_modules
+=======
 # Logs
 logs
 *.log
@@ -105,3 +110,4 @@ dist
 .tern-port
 
 ./telegramRoute/tmp/*
+>>>>>>> 9955051b055d827a76e8044e9e137432fe4591a0
