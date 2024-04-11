@@ -2,31 +2,6 @@
   "name": "tiledesk-telegram",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "fastify": "^4.21.0",
-    "handlebars": "^4.7.8",
-    "@fastify/formbody": "^7.4.0",
-    "@fastify/static": "^6.10.2",
-    "@fastify/view": "^8.0.0"
-  },
-  "engines": {
-    "node": "14.x"
-  },
-  "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-hello-node"
-  },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch"
-  ]
-=======
-  "name": "tiledesk-telegram",
-  "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -54,5 +29,4 @@
     "uuid": "^9.0.0",
     "winston": "^3.10.0"
   }
->>>>>>> 9955051b055d827a76e8044e9e137432fe4591a0
 }
