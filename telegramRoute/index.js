@@ -215,7 +215,8 @@ router.get('/configure', async (req, res) => {
       app_version: pjson.version,
       project_id: projectId,
       token: token,
-      departments: departments
+      departments: departments,
+      brand_name: BRAND_NAME
     }
   }
 
@@ -743,6 +744,7 @@ function startApp(settings, callback) {
   if (settings.BRAND_NAME) {
     BRAND_NAME = settings.BRAND_NAME
   }
+  console.log("BRAND_NAME: ", BRAND_NAME)
 
   if (settings.log) {
     log = settings.log;
