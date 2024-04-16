@@ -14,6 +14,7 @@ const TELEGRAM_API_URL = process.env.TELEGRAM_API_URL;
 const TELEGRAM_FILE_URL = process.env.TELEGRAM_FILE_URL;
 const MONGODB_URL = process.env.MONGODB_URL;
 const APPS_API_URL = process.env.APPS_API_URL;
+const BRAND_NAME = process.env.BRAND_NAME;
 const log = false;
 
 telegram.startApp(
@@ -24,6 +25,7 @@ telegram.startApp(
     TELEGRAM_FILE_URL: TELEGRAM_FILE_URL,
     BASE_URL: BASE_URL,
     APPS_API_URL: APPS_API_URL,
+    BRAND_NAME: BRAND_NAME,
     log: log
   }, () => {
     console.log("Telegram route succesfully started.");

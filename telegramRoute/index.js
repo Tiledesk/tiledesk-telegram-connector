@@ -30,6 +30,7 @@ var TELEGRAM_API_URL = null;
 var TELEGRAM_FILE_URL = null;
 var BASE_URL = null;
 var APPS_API_URL = null;
+let BRAND_NAME = null;
 var log = false;
 
 // Handlebars register helpers
@@ -733,6 +734,10 @@ function startApp(settings, callback) {
   } else {
     APPS_API_URL = settings.APPS_API_URL;
     winston.info("(tgm) APPS_API_URL: " + APPS_API_URL);
+  }
+  
+  if (settings.BRAND_NAME) {
+    BRAND_NAME = settings.BRAND_NAME
   }
 
   if (settings.log) {
