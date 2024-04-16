@@ -91,26 +91,29 @@
 
   <!-- INFO BOX -->
   <div class="info-box">
+    {{#unless brand_name}}
     <div class="info-list">
        <ul>
         <div class="list-element">
-          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width=20 height=20 style="margin-right: 10px;"/>
+          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width="20" height="20" style="margin-right: 10px;"/>
           <h7>Integrate Telegram bot with Tiledesk.</h7>
         </div>
         <div class="list-element">
-          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width=20 height=20 style="margin-right: 10px;"/>
+          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width="20" height="20" style="margin-right: 10px;"/>
           <h7>Once a chat is initiated on Telegram bot, receive an alert on your Tiledesk account.</h7>
         </div>
         <div class="list-element">
-          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width=20 height=20 style="margin-right: 10px;"/>
+          <img src="https://cdn-icons-png.flaticon.com/512/1443/1443000.png" width="20" height="20" style="margin-right: 10px;"/>
           <h7>Enable instant messaging and answer multiple conversations, everything from Tiledesk account.</h7>
         </div>
       </ul>
     </div>
+    {{/unless}}
   </div>
 
   <!-- Docs Section -->
   <div class="docs-box">
+    {{#unless brand_name}}
     <div class="docs-section">
       <p style="margin-top: 20px; font-size: 18px; font-weight: 600;">Before you start</p>
       <div style="padding: 20px; background-color: #2fa2dc24; border-radius: 8px; width: 600px; margin-bottom: 5px;">
@@ -125,6 +128,7 @@
         </div>
       </div>
     </div>
+    {{/unless}}
   </div>
   
 
@@ -236,20 +240,20 @@
     </div>  
   </div>
   {{/if}}
-
-
+  
   {{#if telegram_token}}
   <div class="disconnect-box">
-  {{else}} 
-  <div class="disconnect-box" style="background-color: white;">
-  {{/if}}
     <div class="disconnect">
       <p class="title" style="margin-bottom: 20px;"> Disconnect</p>  
 
         <!-- Disconnect Button -->
         {{#if telegram_token}}
         <div>
-          <p style="color: rgb(140, 140, 140);">The Telegram App is configured on your Tildesk project.</p>
+          {{#if brand_name}}
+          <p style="color: rgb(140, 140, 140);">The Telegram App is configured on your {{ brand_name }} project.</p>
+          {{else}}
+          <p style="color: rgb(140, 140, 140);">The Telegram App is configured on your Tiledesk project.</p>
+          {{/if}}
           <p>By clicking on disconnect you will no longer be able to receive messages from the Telegram channel</p>
           <form action="./disconnect" method="post">
             <input type="hidden" name="project_id" value="{{ project_id }}">
@@ -260,11 +264,46 @@
         </div>
         {{else}}
         <!-- App not configured -->
-        <p style="color: rgb(140, 140, 140);">The Telegram App is not yet configured on your Tildesk project.</p>
+          {{#if brand_name}}
+        <p style="color: rgb(140, 140, 140);">The Telegram App is not yet configured on your {{ brand_name}} project.</p>
+        {{else}}
+        <p style="color: rgb(140, 140, 140);">The Telegram App is not yet configured on your Tiledesk project.</p>
+          {{/if}}
+        {{/if}}
+    </div>  
+  </div>
+  {{else}}
+  <div class="disconnect-box" style="background-color: white;">
+    <div class="disconnect">
+      <p class="title" style="margin-bottom: 20px;"> Disconnect</p>  
+
+        <!-- Disconnect Button -->
+        {{#if telegram_token}}
+        <div>
+          {{#if brand_name}}
+          <p style="color: rgb(140, 140, 140);">The Telegram App is configured on your {{ brand_name }} project.</p>
+          {{else}}
+          <p style="color: rgb(140, 140, 140);">The Telegram App is configured on your Tiledesk project.</p>
+          {{/if}}
+          <p>By clicking on disconnect you will no longer be able to receive messages from the Telegram channel</p>
+          <form action="./disconnect" method="post">
+            <input type="hidden" name="project_id" value="{{ project_id }}">
+                <input type="hidden" name="token" value="{{ token }}">
+                <input type="hidden" name="subscription_id" value="{{ subscription_id }}">
+            <input type="submit" class="btn disconnect-button" style="margin-top: 10px; width: 160px;" value="Disconnect">
+          </form>
+        </div>
+        {{else}}
+        <!-- App not configured -->
+        {{#if brand_name}}
+        <p style="color: rgb(140, 140, 140);">The Telegram App is not yet configured on your {{ brand_name}} project.</p>
+        {{else}}
+        <p style="color: rgb(140, 140, 140);">The Telegram App is not yet configured on your Tiledesk project.</p>
+          {{/if}}
         {{/if}}
     </div>
   </div>
-
+  {{/if}}
 
   <!--
   <div class="version-box">
@@ -312,3 +351,4 @@
 </script>
   
 </body>
+</html>

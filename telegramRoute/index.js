@@ -207,7 +207,8 @@ router.get('/configure', async (req, res) => {
       subscriptionId: settings.subscriptionId,
       show_info_message: settings.show_info_message,
       department_id: settings.department_id,
-      departments: departments
+      departments: departments,
+      brand_name: BRAND_NAME
     }
   } else {
     var replacements = {
@@ -270,7 +271,8 @@ router.post('/update', async (req, res) => {
         telegram_token: settings.telegram_token,
         show_info_message: settings.show_info_message,
         department_id: settings.department_id,
-        departments: departments
+        departments: departments,
+        brand_name: BRAND_NAME
       }
       var html = template(replacements);
       res.send(html);
@@ -324,7 +326,8 @@ router.post('/update', async (req, res) => {
             telegram_token: settings.telegram_token,
             show_info_message: settings.show_info_message,
             department_id: settings.department_id,
-            departments: departments
+            departments: departments,
+            brand_name: BRAND_NAME
           }
           var html = template(replacements);
           res.send(html);
@@ -394,7 +397,8 @@ router.post('/disconnect', async (req, res) => {
         app_version: pjson.version,
         project_id: projectId,
         token: token,
-        departments: departments
+        departments: departments,
+        brand_name: BRAND_NAME
       }
       var html = template(replacements);
       res.send(html);
