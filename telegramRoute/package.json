@@ -1,6 +1,6 @@
 {
   "name": "@tiledesk/tiledesk-telegram-connector",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Tiledesk Telegram connector",
   "main": "index.js",
   "scripts": {
