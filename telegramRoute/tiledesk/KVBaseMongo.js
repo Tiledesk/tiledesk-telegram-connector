@@ -39,9 +39,17 @@ class KVBaseMongo {
       }
     });
   }
+  
+   reuseConnection(db, callback) {
+    this.db = db;
+    this.db.collection(this.KV_COLLECTION).createIndex(
+      { "key": 1 }, { unique: true }
+    )
+    callback();
+  }
 
   set(k, v) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       //this.db.set(k, v).then(() => {resolve();});
       this.db.collection(this.KV_COLLECTION).updateOne({key: k}, { $set: { value: v, key: k } }, { upsert: true }, function(err, doc) {
         if (err) {
@@ -55,7 +63,7 @@ class KVBaseMongo {
   }
 
   get(k) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       //this.db.get(k).then(value => {resolve(value)});
       //console.log("Searching on ", this.db)
       winston.debug("Searching on Collection", this.KV_COLLECTION)
@@ -80,7 +88,7 @@ class KVBaseMongo {
   }
 
   remove(k) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       this.db.collection(this.KV_COLLECTION).deleteOne({key: k}, function(err) {
         if (err) {
           reject(err);

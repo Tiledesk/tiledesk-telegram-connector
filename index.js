@@ -17,6 +17,8 @@ const APPS_API_URL = process.env.APPS_API_URL;
 const BRAND_NAME = process.env.BRAND_NAME;
 const log = false;
 
+console.log("Starting telegram");
+
 telegram.startApp(
   {
     MONGODB_URL: MONGODB_URL,
@@ -35,3 +37,21 @@ telegram.startApp(
     })
   }
 )
+
+/**
+ * Alternative start passing ad external db client
+ */
+// mongoose.connect(MONGODB_URL, { useNewUrlParser: true, autoIndex: true }, function(err) {
+//   if (err) {
+//     console.error('Failed to connect to MongoDB on ' + databaseUri + " ", err);
+//     process.exit(1);
+//   }
+//   console.log("Mongoose connection done on host: "+mongoose.connection.host + " on port: " + mongoose.connection.port + " with name: "+ mongoose.connection.name)// , mongoose.connection.db);
+
+//   whatsapp.startApp(
+//     {
+//       dbconnection: mongoose.connection,
+//       // like before
+//     }
+//   );
+// });

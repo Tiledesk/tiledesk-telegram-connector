@@ -750,12 +750,22 @@ function startApp(settings, callback) {
     log = settings.log;
   }
 
-  db.connect(settings.MONGODB_URL, () => {
-    winston.info("(tgm) KVBaseMongo succesfully connected.");
-    if (callback) {
-      callback();
-    }
-  })
+  if (settings.dbconnection) {
+    db.reuseConnection(settings.dbconnection, () => {
+      winston.info("(wab) KVBaseMongo reused exsisting db connection");
+      if (callback) {
+        callback(null);
+      }
+    })
+  } else {
+    db.connect(settings.MONGODB_URL, () => {
+      winston.info("(wab) KVBaseMongo successfully connected.");
+  
+      if (callback) {
+        callback(null);
+      }
+    });
+  }
 }
 
 function readHTMLFile(templateName, callback) {
