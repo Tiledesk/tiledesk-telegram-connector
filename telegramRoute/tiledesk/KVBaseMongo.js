@@ -37,7 +37,7 @@ class KVBaseMongo {
         );
         callback();
       }
-    });
+    }); 
   }
   
    reuseConnection(db, callback) {
