@@ -40,7 +40,7 @@ class KVBaseMongo {
     }); 
   }
   
-   reuseConnection(db, callback) {
+  reuseConnection(db, callback) {
     this.db = db;
     this.db.collection(this.KV_COLLECTION).createIndex(
       { "key": 1 }, { unique: true }
