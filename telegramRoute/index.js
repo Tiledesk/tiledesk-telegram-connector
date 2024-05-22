@@ -255,6 +255,7 @@ router.post('/update', async (req, res) => {
     settings.telegram_token = telegram_token;
     settings.department_id = department_id;
 
+    console.log("settings: ", settings)
     await db.set(CONTENT_KEY, settings);
 
     readHTMLFile('/configure.html', (err, html) => {
@@ -310,6 +311,8 @@ router.post('/update', async (req, res) => {
           department_id: department_id
         }
 
+        console.log("settings: ", settings)
+        
         db.set(CONTENT_KEY, settings);
 
         readHTMLFile('/configure.html', (err, html) => {
@@ -405,7 +408,7 @@ router.post('/disconnect', async (req, res) => {
       res.send(html);
     })
   }).catch((err) => {
-    winston.error("(tgm) unsubscribe error: ", err);
+    winston.error("(tgm) unsubscribe error: ", err.response.data);
   })
 
 })
