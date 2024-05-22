@@ -157,6 +157,7 @@ class TiledeskTelegram {
     const data = {
       "url": this.BASE_URL + `/telegram/?project_id=${projectId}`
     }
+    console.log("data: ", data)
     const HTTPREQUEST = {
       url: URL,
       headers: {
