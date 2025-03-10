@@ -298,7 +298,7 @@ router.post('/update', async (req, res) => {
       const ttClient = new TiledeskTelegram({ BASE_URL: BASE_URL, TELEGRAM_API_URL: TELEGRAM_API_URL, log: true });
 
       ttClient.setWebhookEndpoint(projectId, telegram_token).then((response) => {
-        winston.debug("(tgm) Set webhook endpoint response: ", response.result, response.description);
+        winston.debug("(tgm) Set webhook endpoint response: "+ response.result +  ' ' + response.description);
 
         let settings = {
           app_version: pjson.version,
