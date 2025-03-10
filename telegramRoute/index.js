@@ -311,7 +311,7 @@ router.post('/update', async (req, res) => {
           department_id: department_id
         }
 
-        console.log("settings: ", settings)
+        console.log("settings 2: ", settings)
         
         db.set(CONTENT_KEY, settings);
 
