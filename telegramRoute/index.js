@@ -299,6 +299,7 @@ router.post('/update', async (req, res) => {
 
       ttClient.setWebhookEndpoint(projectId, telegram_token).then((response) => {
         winston.debug("(tgm) Set webhook endpoint response: ", response.result, response.description);
+        console.log("(tgm) Set webhook endpoint response: ", response.result, response.description);
 
         let settings = {
           app_version: pjson.version,
