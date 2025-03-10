@@ -299,7 +299,6 @@ router.post('/update', async (req, res) => {
 
       ttClient.setWebhookEndpoint(projectId, telegram_token).then((response) => {
         winston.debug("(tgm) Set webhook endpoint response: ", response.result, response.description);
-        console.log("(tgm) Set webhook endpoint response: ", response.result, response.description);
 
         let settings = {
           app_version: pjson.version,
@@ -376,10 +375,19 @@ router.post('/disconnect', async (req, res) => {
   let projectId = req.body.project_id;
   let token = req.body.token;
   let subscriptionId = req.body.subscriptionId;
+  
+  let telegram_token = ''
 
   let CONTENT_KEY = "telegram-" + projectId;
-  await db.remove(CONTENT_KEY);
-  winston.verbose("(tgm) Content deleted: ", CONTENT_KEY);
+  let settings = await db.get(CONTENT_KEY);
+  if (settings) {
+    telegram_token = settings?.telegram_token;
+    await db.remove(CONTENT_KEY);
+    winston.verbose("(tgm) Content deleted: ", CONTENT_KEY);
+  }
+  
+  
+  
 
   const tdChannel = new TiledeskChannel({ settings: { project_id: projectId, token: token }, API_URL: API_URL })
   const tdClient = new TiledeskSubscriptionClient({ API_URL: API_URL, project_id: projectId, token: token, log: false })
@@ -391,23 +399,34 @@ router.post('/disconnect', async (req, res) => {
 
   tdClient.unsubscribe(subscriptionId).then((data) => {
 
-    readHTMLFile('/configure.html', (err, html) => {
+    // setWebhookEndpoint for Telegram
+      const ttClient = new TiledeskTelegram({ BASE_URL: BASE_URL, TELEGRAM_API_URL: TELEGRAM_API_URL, log: true });
 
-      if (err) {
-        winston.error("(tgm) Read html file error: ", err);
-      }
+      ttClient.deleteWebhookEndpoint(projectId, telegram_token).then((response) => {
+        winston.debug("(tgm) Delete webhook endpoint response: ", response.result, response.description);
+        
+        readHTMLFile('/configure.html', (err, html) => {
 
-      var template = handlebars.compile(html);
-      var replacements = {
-        app_version: pjson.version,
-        project_id: projectId,
-        token: token,
-        departments: departments,
-        brand_name: BRAND_NAME
-      }
-      var html = template(replacements);
-      res.send(html);
-    })
+          if (err) {
+            winston.error("(tgm) Read html file error: ", err);
+          }
+
+          var template = handlebars.compile(html);
+          var replacements = {
+            app_version: pjson.version,
+            project_id: projectId,
+            token: token,
+            departments: departments,
+            brand_name: BRAND_NAME
+          }
+          var html = template(replacements);
+          res.send(html);
+        })
+        
+        
+      });
+    
+    
   }).catch((err) => {
     winston.error("(tgm) unsubscribe error: ", err.response.data);
   })

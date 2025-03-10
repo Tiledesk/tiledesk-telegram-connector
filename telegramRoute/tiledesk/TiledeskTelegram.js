@@ -186,6 +186,36 @@ class TiledeskTelegram {
     })
     return promise;
   }
+  
+  async deleteWebhookEndpoint(projectId, telegram_token, callback) {
+    const URL = this.TELEGRAM_API_URL + `${telegram_token}/deleteWebhook`;
+    const HTTPREQUEST = {
+      url: URL,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    };
+    let promise = new Promise((resolve, reject) => {
+      TiledeskTelegram.request(
+        HTTPREQUEST,
+        function(err, resbody) {
+          if (err) {
+            if (callback) {
+              callback(err);
+            }
+            reject(err);
+          }
+          else {
+            if (callback) {
+              callback(null, resbody);
+            }
+            resolve(resbody);
+          }
+        }, true)
+    })
+    return promise;
+  }
 
 
   async editMessageReplyMarkup(telegram_token, reply_markup_data, callback) {
