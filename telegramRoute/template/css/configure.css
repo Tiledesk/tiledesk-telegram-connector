@@ -2,6 +2,7 @@
 
 body {
   padding: 20px 0px;
+  font-size: 14px;
 }
 
 .header {
@@ -105,6 +106,10 @@ ul {
   margin-top: 20px;
 }
 
+.form-group {
+    margin-bottom: 15px;
+}
+
 .advanced-box {
   margin-top: 20px;
   width: 100%;
@@ -145,7 +150,7 @@ ul {
   padding: 0px 8px;
   cursor: pointer;
   margin-top: 12px;
-  margin-left: -63px;
+  margin-left: -66px;
   font-size: 18px;
 }
 
@@ -156,6 +161,12 @@ ul {
 
 .copy-form {
   padding: 6px 36px 6px 14px;
+}
+
+input[readonly],
+textarea[readonly] {
+  background-color: #eee !important;
+  opacity: 1;
 }
 
 .custom-input {
@@ -181,6 +192,15 @@ ul {
   box-shadow: 0px 0px 7px 0px #bdbdbd;
   border: solid 2px transparent;
   border-radius: 6px;
+  appearance: none;          /* Rimuove lo stile di default */
+  -webkit-appearance: none;  /* Safari */
+  -moz-appearance: none;     /* Firefox */
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='gray' class='bi bi-caret-down-fill' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14l-4.796-5.481C2.122 5.332 2.482 4.5 3.252 4.5h9.496c.77 0 1.13.832.801 1.159l-4.796 5.481a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center; /* posizionamento freccia */
+  background-size: 12px;
+  padding-right: 2rem; /* spazio per la freccia */
 }
 
 .custom-select:hover {
@@ -205,6 +225,7 @@ ul {
   width: 300px;
   background-color: #8c8e8fbd;
   font-size: 13px;
+  font-weight: 400;
   color: #fff;
   text-align: center;
   padding: 8px 8px;
