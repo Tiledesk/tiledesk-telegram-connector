@@ -5,8 +5,6 @@ echo "version $version"
 ## Update package-lock.json
 npm install
 
-cd ..
-
 git add .
 git commit -m "version added: ### $version"
 git push remote main
